@@ -6,6 +6,9 @@
  * - firebase-admin/app
  * - firebase-admin/auth
  * - firebase-admin/firestore
+ *
+ * Uses safe lazy Proxy initialization to prevent top-level module evaluation failures
+ * and GCP metadata service timeouts when deployed on serverless runtimes without service account keys.
  */
 
 import { initializeApp, getApps, cert, App } from "firebase-admin/app";
@@ -23,7 +26,11 @@ export function hasAdminCredentials(): boolean {
   );
 }
 
-function initializeFirebaseAdmin(): App {
+function initializeFirebaseAdmin(): App | null {
+  if (!hasAdminCredentials()) {
+    return null;
+  }
+
   const existingApps = getApps();
   if (existingApps.length > 0) {
     return existingApps[0]!;
@@ -66,13 +73,68 @@ function initializeFirebaseAdmin(): App {
     });
   }
 
-  // 3. Fallback: Initialize with projectId only (avoids blocking metadata lookup in serverless)
-  return initializeApp({
-    projectId,
-  });
+  return null;
 }
 
-const adminApp: App = initializeFirebaseAdmin();
-export const adminAuth: Auth = getAuth(adminApp);
-export const adminDb: Firestore = getFirestore(adminApp);
-export default adminApp;
+let _adminApp: App | null = null;
+let _adminAuth: Auth | null = null;
+let _adminDb: Firestore | null = null;
+
+export function getAdminApp(): App | null {
+  if (!_adminApp) {
+    _adminApp = initializeFirebaseAdmin();
+  }
+  return _adminApp;
+}
+
+export function getAdminAuth(): Auth | null {
+  if (!_adminAuth) {
+    const app = getAdminApp();
+    if (app) {
+      try {
+        _adminAuth = getAuth(app);
+      } catch (err) {
+        console.warn("[Firebase Admin] getAuth initialization error:", err);
+      }
+    }
+  }
+  return _adminAuth;
+}
+
+export function getAdminDb(): Firestore | null {
+  if (!_adminDb) {
+    const app = getAdminApp();
+    if (app) {
+      try {
+        _adminDb = getFirestore(app);
+      } catch (err) {
+        console.warn("[Firebase Admin] getFirestore initialization error:", err);
+      }
+    }
+  }
+  return _adminDb;
+}
+
+export const adminAuth = new Proxy({} as Auth, {
+  get(_target, prop) {
+    const auth = getAdminAuth();
+    if (!auth) {
+      throw new Error("Firebase Admin Auth is not configured (missing FIREBASE_SERVICE_ACCOUNT_KEY).");
+    }
+    const value = (auth as any)[prop];
+    return typeof value === "function" ? value.bind(auth) : value;
+  },
+});
+
+export const adminDb = new Proxy({} as Firestore, {
+  get(_target, prop) {
+    const db = getAdminDb();
+    if (!db) {
+      throw new Error("Firebase Admin Firestore is not configured (missing FIREBASE_SERVICE_ACCOUNT_KEY).");
+    }
+    const value = (db as any)[prop];
+    return typeof value === "function" ? value.bind(db) : value;
+  },
+});
+
+export default adminAuth;
