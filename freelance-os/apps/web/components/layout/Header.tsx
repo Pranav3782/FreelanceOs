@@ -1,25 +1,6 @@
 /**
  * @file apps/web/components/layout/Header.tsx
  * @description Universal Top Navigation Header Component for FreelanceOS
- *
- * WHY THIS FILE WAS CREATED:
- * A cohesive SaaS application requires a consistent, highly accessible primary navigation bar.
- * This component provides brand identity, high-level route switching across the 6 major
- * platform hubs (Dashboard, Analyze, Applications, History, Profile, Settings), user session
- * indicators, and a responsive mobile drawer.
- *
- * WHY AND HOW IT IS USED:
- * 1. Global Platform Navigation:
- *    - Rendered via `TopNavWrapper` on all marketing, authentication, and workspace pages.
- * 2. Layout Compensation (`isDashboardLayout`):
- *    - When the user navigates into an authenticated app page (e.g. `/dashboard`, `/analyze`),
- *      the left sidebar occupies 3.5rem to 15rem. The header adds `lg:pl-[5.5rem]` so that the
- *      logo and links align harmoniously with the dashboard content grid.
- * 3. Multi-Tier Menu System:
- *    - Desktop: Clean pill links with smooth CSS hover cards for secondary sub-routes.
- *    - Mobile: Fullscreen slide-down drawer with collapsible category trees and auth controls.
- * 4. Auth State Awareness:
- *    - Inspects `useAuth()` to switch dynamically between [Log in / Sign up] and [Dashboard / User Badge / Sign out].
  */
 
 "use client";
@@ -27,16 +8,23 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, LogOut, User } from "lucide-react";
+import { Menu, X, LogOut, User, Search, Bell, Settings, Plus } from "lucide-react";
 
 // UI Components & Utilities
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/components/providers/AuthContext";
 
 /* =========================================================================
    Navigation Schema & Hierarchy
-   Defines top-level navigation hubs and their respective sub-page links.
    ========================================================================= */
 const NAVIGATION = [
   {
@@ -45,14 +33,6 @@ const NAVIGATION = [
     items: [
       { title: "Overview", href: "/dashboard" },
       { title: "Performance Insights", href: "/dashboard" },
-    ],
-  },
-  {
-    title: "Analyze Project",
-    href: "/analyze",
-    items: [
-      { title: "New Analysis", href: "/analyze" },
-      { title: "Recent Analyses", href: "/history" },
     ],
   },
   {
@@ -95,29 +75,30 @@ const NAVIGATION = [
   },
 ];
 
-
 /* =========================================================================
    Header Component
    ========================================================================= */
 export const Header = () => {
-
   /* ── 1. STATE & ROUTING HOOKS ─────────────────────────────────────────── */
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [searchOpen, setSearchOpen] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const pathname = usePathname();
   const router = useRouter();
   const { user, logout } = useAuth();
 
-  // Detect whether current screen is within the internal authenticated app routes
-  const isDashboardLayout =
-    pathname?.startsWith("/dashboard") ||
-    pathname?.startsWith("/analyze") ||
-    pathname?.startsWith("/history") ||
-    pathname?.startsWith("/applications") ||
-    pathname?.startsWith("/settings") ||
-    pathname?.startsWith("/profile");
+  /* ── 2. USER DETAILS ────────────────────────────────────────────────── */
+  const displayName = user?.displayName || "Freelancer";
+  const displayEmail = user?.email || "user@freelanceos.dev";
+  const initials = (
+    user?.displayName
+      ? user.displayName.slice(0, 2)
+      : user?.email
+      ? user.email.slice(0, 2)
+      : "FL"
+  ).toUpperCase();
 
-  /* ── 2. ACTION HANDLERS ───────────────────────────────────────────────── */
-  // Gracefully terminates Firebase user session and redirects to login
+  /* ── 3. ACTION HANDLERS ───────────────────────────────────────────────── */
   const handleSignOut = async () => {
     try {
       await logout();
@@ -127,17 +108,19 @@ export const Header = () => {
     }
   };
 
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/history?search=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchOpen(false);
+      setSearchQuery("");
+    }
+  };
 
-  /* ── 3. RENDER ────────────────────────────────────────────────────────── */
+  /* ── 4. RENDER ────────────────────────────────────────────────────────── */
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-[#FDFCFB]/95 backdrop-blur supports-[backdrop-filter]:bg-[#FDFCFB]/80 transition-all">
-      <div
-        className={cn(
-          "flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 md:px-8 mx-auto",
-          isDashboardLayout && "lg:pl-[5.5rem]"
-        )}
-      >
-
+      <div className="flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 md:px-8 mx-auto">
         {/* ── Brand Logo ── */}
         <div className="flex items-center gap-2 mr-4 md:mr-8">
           <Link
@@ -147,7 +130,6 @@ export const Header = () => {
             FreelanceOS
           </Link>
         </div>
-
 
         {/* ── Desktop Primary Navigation Bar ── */}
         <nav
@@ -192,65 +174,101 @@ export const Header = () => {
           ))}
         </nav>
 
+        {/* ── Right Navbar Actions Theme-Matched ── */}
+        <div className="flex items-center gap-2 sm:gap-3 ml-auto">
+          {/* 1. Black New Analyze Button */}
+          <Link href="/analyze">
+            <Button
+              size="sm"
+              className="rounded-full bg-black text-white hover:bg-black/85 text-xs sm:text-[13px] font-medium px-3.5 sm:px-4 h-9 shadow-xs transition-colors gap-1.5 flex items-center"
+            >
+              <Plus className="h-4 w-4" />
+              <span>New Analyze</span>
+            </Button>
+          </Link>
 
-        {/* ── Right Action Buttons: Contact sales & Log in (No Sign up) ── */}
-        <div className="flex items-center gap-2.5 sm:gap-3 ml-auto xl:ml-8">
-          {user ? (
-            /* Authenticated State */
-            <div className="flex items-center gap-2.5">
-              <Link href="/contact">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full border border-stone-300/80 bg-white/90 hover:bg-stone-100 text-stone-900 text-xs sm:text-[13px] font-medium px-4 h-9 shadow-2xs transition-colors"
-                >
-                  Contact sales
-                </Button>
-              </Link>
-
-              <Link href="/dashboard">
-                <Button
-                  size="sm"
-                  className="rounded-full bg-black text-white hover:bg-black/85 text-xs sm:text-[13px] font-medium px-4 h-9 shadow-xs transition-colors"
-                >
-                  Dashboard
-                </Button>
-              </Link>
-
-              {/* Sign Out Trigger */}
+          {/* 2. Search Bar Icon Trigger */}
+          <div className="relative">
+            {searchOpen ? (
+              <form onSubmit={handleSearchSubmit} className="flex items-center">
+                <input
+                  type="text"
+                  autoFocus
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search project audits..."
+                  className="h-9 w-36 sm:w-48 rounded-full border border-slate-300 bg-white px-3 text-xs text-foreground focus:border-blue-500 focus:outline-none shadow-xs"
+                  onBlur={() => !searchQuery && setSearchOpen(false)}
+                />
+              </form>
+            ) : (
               <Button
                 variant="ghost"
-                size="sm"
-                onClick={handleSignOut}
-                className="rounded-full text-xs font-medium h-9 px-3 text-muted-foreground hover:text-destructive transition-colors"
+                size="icon"
+                onClick={() => setSearchOpen(true)}
+                className="h-9 w-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-black/[0.04]"
+                title="Search"
               >
-                <LogOut className="h-3.5 w-3.5 mr-1" />
-                <span className="hidden sm:inline">Sign out</span>
+                <Search className="h-4.5 w-4.5" />
               </Button>
-            </div>
-          ) : (
-            /* Guest / Visitor State */
-            <div className="flex items-center gap-2.5">
-              <Link href="/contact">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full border border-stone-300/80 bg-white/90 hover:bg-stone-100 text-stone-900 text-xs sm:text-[13px] font-medium px-4 h-9 shadow-2xs transition-colors"
-                >
-                  Contact sales
-                </Button>
-              </Link>
+            )}
+          </div>
 
-              <Link href="/login">
-                <Button
-                  size="sm"
-                  className="rounded-full bg-black text-white hover:bg-black/85 text-xs sm:text-[13px] font-medium px-4 sm:px-5 h-9 shadow-xs transition-colors"
-                >
-                  Log in
-                </Button>
-              </Link>
-            </div>
-          )}
+          {/* 3. Reminder Icon (Bell Notification) */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="relative h-9 w-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-black/[0.04]"
+            title="Reminders & Notifications"
+          >
+            <Bell className="h-4.5 w-4.5" />
+            <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-blue-500 ring-2 ring-white" />
+          </Button>
+
+          {/* 4. Profile Avatar */}
+          <DropdownMenu modal={false}>
+            <DropdownMenuTrigger asChild>
+              <button
+                className="flex items-center justify-center rounded-full outline-none ring-offset-background transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring"
+                title="User Profile"
+              >
+                <Avatar className="h-9 w-9 border border-border/80 shadow-2xs">
+                  <AvatarFallback className="bg-black/5 text-black dark:bg-zinc-800 dark:text-white font-bold text-xs">
+                    {initials}
+                  </AvatarFallback>
+                </Avatar>
+              </button>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent align="end" className="w-56">
+              <div className="flex flex-col p-2.5">
+                <span className="text-sm font-semibold text-foreground">
+                  {displayName}
+                </span>
+                <span className="text-xs text-muted-foreground truncate">
+                  {displayEmail}
+                </span>
+              </div>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild className="cursor-pointer">
+                <Link href="/profile" className="flex items-center gap-2">
+                  <User className="h-4 w-4" /> Profile Information
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="cursor-pointer">
+                <Link href="/settings" className="flex items-center gap-2">
+                  <Settings className="h-4 w-4" /> Account Settings
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={handleSignOut}
+                className="flex cursor-pointer items-center gap-2 text-destructive focus:text-destructive"
+              >
+                <LogOut className="h-4 w-4" /> Sign out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           {/* ── Mobile Hamburger Drawer Button ── */}
           <Button
@@ -266,11 +284,8 @@ export const Header = () => {
               <Menu className="h-5 w-5" />
             )}
           </Button>
-
         </div>
-
       </div>
-
 
       {/* ── Mobile Navigation Drawer ── */}
       {isMobileMenuOpen && (
@@ -302,49 +317,9 @@ export const Header = () => {
                 )}
               </div>
             ))}
-
-            {/* Mobile Auth Actions */}
-            <div className="pt-4 mt-2 border-t border-border/50 flex flex-col gap-3">
-              {user ? (
-                <div className="flex flex-col gap-2.5">
-                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button variant="outline" className="w-full rounded-full justify-center border-stone-300">
-                      Contact sales
-                    </Button>
-                  </Link>
-                  <Button
-                    variant="ghost"
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      handleSignOut();
-                    }}
-                    className="w-full rounded-full justify-center text-destructive"
-                  >
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Sign out
-                  </Button>
-                </div>
-              ) : (
-                <div className="flex flex-col gap-2.5">
-                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button variant="outline" className="w-full rounded-full justify-center border-stone-300">
-                      Contact sales
-                    </Button>
-                  </Link>
-
-                  <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full rounded-full justify-center font-semibold bg-black text-white hover:bg-black/90">
-                      Log in
-                    </Button>
-                  </Link>
-                </div>
-              )}
-            </div>
-
           </div>
         </div>
       )}
-
     </header>
   );
 };

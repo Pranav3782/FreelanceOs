@@ -1,26 +1,12 @@
 /**
  * @file apps/web/components/layout/TopNavWrapper.tsx
- * @description Intelligent Navigation Header Wrapper with Route-Based Visibility Filtering
- *
- * WHY THIS FILE WAS CREATED:
- * In Next.js App Router, the top-level layout (`app/layout.tsx`) wraps the entire application.
- * However, public freelancer portfolio pages (such as `/p/[slug]` or `/portfolio/[slug]`)
- * are intended to be shared directly with external clients as standalone professional showcases.
- * Showing the platform's SaaS navigation bar (with links to dashboard, settings, analyze, etc.)
- * would distract clients and violate the standalone portfolio experience.
- *
- * WHY AND HOW IT IS USED:
- * 1. Dynamic Route Inspection:
- *    - Uses the Next.js `usePathname()` hook on the client.
- * 2. Conditional Suppression:
- *    - Returns `null` if the route begins with `/p/` or `/portfolio/`.
- * 3. Default Display:
- *    - Renders the global `<Header />` component on all other platform routes.
+ * @description Intelligent Navigation Header Wrapper with Route & Auth-Based Visibility Filtering
  */
 
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/components/providers/AuthContext";
 import { Header } from "./Header";
 
 /* =========================================================================
@@ -28,13 +14,23 @@ import { Header } from "./Header";
    ========================================================================= */
 export function TopNavWrapper() {
   const pathname = usePathname();
+  const { user } = useAuth();
 
-  // 1. Hide the global platform navigation on public, client-facing portfolio showcases
+  // 1. Hide global navigation on public portfolio showcases
   if (pathname?.startsWith("/p/") || pathname?.startsWith("/portfolio/")) {
     return null;
   }
 
-  // 2. Render the universal top navigation bar for all marketing and app workspace pages
+  // 2. Hide navbar on landing page (/), login (/login), signup (/signup), forgot-password (/forgot-password) when user is not logged in
+  if (!user) {
+    return null;
+  }
+
+  // 3. Hide navbar on /login and /signup pages even if user session exists (auth form pages)
+  if (pathname === "/login" || pathname === "/signup") {
+    return null;
+  }
+
+  // 4. Render the top navigation bar once the user logs into their account
   return <Header />;
 }
-

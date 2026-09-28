@@ -34,6 +34,9 @@
 import { Hero5 } from "@/components/layout/Hero5";
 import HowItWorks from "@/components/ui/how-it-works";
 import JobSlider from "@/components/ui/job-slider";
+import { PricingSectionDemo } from "@/components/blocks/pricing-section";
+import { FAQSection } from "@/components/ui/faq-section-shadcnui";
+import { GetStartedCTA } from "@/components/ui/get-started-cta";
 
 /* =========================================================================
    Landing Page Component
@@ -57,7 +60,27 @@ export default function Home() {
         <JobSlider />
       </section>
 
+      {/* ── Section 4: Simple, Transparent Pricing Section ── */}
+      <section className="w-full border-t border-border/40">
+        <PricingSectionDemo />
+      </section>
+
+      {/* ── Section 5: Frequently Asked Questions ── */}
+      <section className="w-full border-t border-border/40 bg-slate-50/30 dark:bg-zinc-900/30">
+        <FAQSection />
+      </section>
+
+      {/* ── Section 6: High-Converting Contact & Get Started CTA (Above Footer) ── */}
+      <section className="w-full border-t border-border/40">
+        <GetStartedCTA />
+      </section>
+
     </main>
   );
 }
+
+
+
+
+
 
