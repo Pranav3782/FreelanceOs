@@ -33,8 +33,6 @@ interface PricingSectionProps {
 }
 
 function PricingSection({ tiers, className }: PricingSectionProps) {
-  const [isYearly, setIsYearly] = useState(false)
-
   const buttonStyles = {
     default: cn(
       "h-12 bg-white dark:bg-zinc-900",
@@ -74,32 +72,16 @@ function PricingSection({ tiers, className }: PricingSectionProps) {
       <div className="w-full max-w-5xl mx-auto">
         <div className="flex flex-col items-center gap-4 mb-12">
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 sm:text-4xl text-center">
-            Simple, transparent pricing
+            Simple, transparent plan
           </h2>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 text-center max-w-lg">
-            Choose the plan that fits your freelance workflow. Upgrade or downgrade anytime.
+            Everything you need to analyze client briefs, detect risks, and generate winning proposals.
           </p>
-          <div className="inline-flex items-center p-1.5 bg-white dark:bg-zinc-800/50 rounded-full border border-zinc-200 dark:border-zinc-700 shadow-sm mt-2">
-            {["Monthly", "Yearly"].map((period) => (
-              <button
-                key={period}
-                onClick={() => setIsYearly(period === "Yearly")}
-                className={cn(
-                  "px-8 py-2.5 text-sm font-medium rounded-full transition-all duration-300",
-                  (period === "Yearly") === isYearly
-                    ? "bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-lg"
-                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100",
-                )}
-              >
-                {period} {period === "Yearly" ? "(Save ~20%)" : ""}
-              </button>
-            ))}
-          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-xl mx-auto">
           {tiers.map((tier) => {
-            const currentPrice = isYearly ? tier.price.yearly : tier.price.monthly;
+            const currentPrice = tier.price.monthly;
             const symbol = tier.currencySymbol || "₹";
 
             return (
@@ -110,16 +92,16 @@ function PricingSection({ tiers, className }: PricingSectionProps) {
                   "rounded-3xl transition-all duration-300",
                   "flex flex-col",
                   tier.highlight
-                    ? "bg-gradient-to-b from-zinc-100/80 to-transparent dark:from-zinc-400/[0.15]"
+                    ? "bg-gradient-to-b from-blue-500/10 via-slate-50/50 to-transparent dark:from-blue-500/[0.12] dark:via-zinc-900/50"
                     : "bg-white dark:bg-zinc-800/50",
                   "border",
                   tier.highlight
-                    ? "border-zinc-400/50 dark:border-zinc-400/20 shadow-xl"
+                    ? "border-blue-500/30 dark:border-blue-500/20 shadow-xl"
                     : "border-zinc-200 dark:border-zinc-700 shadow-md",
                   "hover:translate-y-0 hover:shadow-lg",
                 )}
               >
-                {tier.badge && tier.highlight && (
+                {tier.badge && (
                   <div className="absolute -top-4 left-6">
                     <Badge className={badgeStyles}>{tier.badge}</Badge>
                   </div>
@@ -131,7 +113,7 @@ function PricingSection({ tiers, className }: PricingSectionProps) {
                       className={cn(
                         "p-3 rounded-xl",
                         tier.highlight
-                          ? "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
+                          ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
                           : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400",
                       )}
                     >
@@ -149,11 +131,6 @@ function PricingSection({ tiers, className }: PricingSectionProps) {
                           ? "Free"
                           : `${symbol}${currentPrice.toLocaleString()}`}
                       </span>
-                      {currentPrice > 0 && (
-                        <span className="text-sm text-zinc-500 dark:text-zinc-400">
-                          /{isYearly ? "year" : "month"}
-                        </span>
-                      )}
                     </div>
                     <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                       {tier.description}
@@ -197,17 +174,8 @@ function PricingSection({ tiers, className }: PricingSectionProps) {
                       )}
                     >
                       <span className="relative z-10 flex items-center justify-center gap-2">
-                        {tier.highlight ? (
-                          <>
-                            Upgrade to Pro
-                            <ArrowRightIcon className="w-4 h-4" />
-                          </>
-                        ) : (
-                          <>
-                            Start Free
-                            <ArrowRightIcon className="w-4 h-4" />
-                          </>
-                        )}
+                        <span>Get Started Free</span>
+                        <ArrowRightIcon className="w-4 h-4" />
                       </span>
                     </Button>
                   </Link>

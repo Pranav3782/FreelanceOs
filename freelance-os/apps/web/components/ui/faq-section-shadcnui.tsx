@@ -19,12 +19,12 @@ const faqs = [
   {
     question: "Is there a free plan available?",
     answer:
-      "Yes! Our Starter plan is 100% free forever. It includes 5 free opportunity audits and basic proposal generation every month without requiring a credit card.",
+      "Yes! FreelanceOS is 100% free forever for core brief audits, scope risk detection, client safety signals, and proposal generation without requiring a credit card.",
   },
   {
-    question: "What is included in the Pro Plan for ₹499/month?",
+    question: "Can I use FreelanceOS for any type of freelance project?",
     answer:
-      "The Pro plan gives you unlimited brief & contract audits, deep client risk scoring, high-converting proposal generation, dynamic rate calculators, and priority support.",
+      "Yes! FreelanceOS supports all tech, design, writing, consulting, and development project briefs from Upwork, Fiverr, LinkedIn, or direct client contracts.",
   },
   {
     question: "Is my client and project data secure?",

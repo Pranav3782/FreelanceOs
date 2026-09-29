@@ -47,26 +47,16 @@ export function GetStartedCTA({ className }: GetStartedCTAProps) {
             Our team is here to help you parse client briefs, structure risk audits, setup enterprise accounts, or answer any technical questions.
           </p>
 
-          {/* CTA Buttons - Contact Us -> /contact, Start Free Audit -> /login */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-            <Link href="/contact" className="w-full sm:w-auto flex-1">
+          {/* CTA Button - Contact Us -> /contact */}
+          <div className="mt-8 flex justify-center items-center max-w-xs mx-auto">
+            <Link href="/contact" className="w-full sm:w-auto">
               <Button
                 size="lg"
-                className="w-full h-12 px-8 rounded-2xl text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all gap-2"
+                className="w-full sm:w-auto h-12 px-8 rounded-2xl text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all gap-2"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-
-            <Link href="/login" className="w-full sm:w-auto flex-1">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full h-12 px-8 rounded-2xl text-sm font-semibold border-border/80 hover:bg-accent text-foreground transition-all gap-2"
-              >
-                <span>Start Free Audit</span>
               </Button>
             </Link>
           </div>

@@ -5,96 +5,50 @@ import { PricingSection, PricingTier } from "@/components/ui/pricing-section"
 
 const defaultTiers: PricingTier[] = [
   {
-    name: "Starter",
+    name: "Free Plan",
     price: {
       monthly: 0,
       yearly: 0,
     },
     currencySymbol: "₹",
-    description: "Perfect for freelancers getting started with AI brief audits & client intelligence",
-    icon: (
-      <div className="relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-500/30 to-gray-500/30 blur-2xl rounded-full" />
-        <Zap className="w-7 h-7 relative z-10 text-gray-500 dark:text-gray-400 animate-[float_3s_ease-in-out_infinite]" />
-      </div>
-    ),
-    features: [
-      {
-        name: "5 Brief Audits / Month",
-        description: "Analyze up to 5 client briefs or project descriptions each month",
-        included: true,
-      },
-      {
-        name: "Scope & Risk Detection",
-        description: "Spot hidden scope creep, missing deliverables, and vague requirements",
-        included: true,
-      },
-      {
-        name: "Standard Proposal Generator",
-        description: "Generate structured, professional proposal drafts in seconds",
-        included: true,
-      },
-      {
-        name: "Client Red Flag Alerts",
-        description: "Get basic safety scores and warning indicators for new leads",
-        included: true,
-      },
-      {
-        name: "Advanced Pricing Calculator",
-        description: "Dynamic rate recommendations based on scope complexity",
-        included: false,
-      },
-      {
-        name: "Unlimited Audits & Storage",
-        description: "Unlimited analysis history and custom proposal templates",
-        included: false,
-      },
-    ],
-  },
-  {
-    name: "Pro",
-    price: {
-      monthly: 499,
-      yearly: 4790,
-    },
-    currencySymbol: "₹",
-    description: "Ideal for active freelancers & independent agencies closing high-ticket deals",
+    description: "Everything you need to audit client briefs, spot scope risks, and generate winning proposals",
     highlight: true,
-    badge: "Most Popular",
+    badge: "100% Free Forever",
     icon: (
       <div className="relative">
-        <ShieldCheck className="w-7 h-7 relative z-10 text-emerald-500 dark:text-emerald-400" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-blue-500/30 blur-2xl rounded-full" />
+        <Zap className="w-7 h-7 relative z-10 text-blue-600 dark:text-blue-400 animate-[float_3s_ease-in-out_infinite]" />
       </div>
     ),
     features: [
       {
-        name: "Unlimited Brief & Contract Audits",
-        description: "Analyze unlimited client briefs, RFPs, and contract terms",
+        name: "5 Brief & Contract Audits / Month",
+        description: "Analyze client briefs, RFPs, and job posts for hidden requirements",
         included: true,
       },
       {
-        name: "Deep Client Intelligence & Risk Scoring",
-        description: "Comprehensive risk breakdown, client reputation signals & safety audit",
+        name: "Scope Creep & Risk Detection",
+        description: "Spot vague deliverables, unrealistic deadlines, and potential red flags",
         included: true,
       },
       {
-        name: "High-Converting AI Proposals",
-        description: "Customized, win-optimized proposals tailored to your portfolio",
+        name: "AI Proposal Generator",
+        description: "Generate structured, professional proposal drafts tailored to the brief",
         included: true,
       },
       {
-        name: "Dynamic Rate & Pricing Engine",
-        description: "Scope-based pricing recommendations to maximize your project profit",
+        name: "Client Intelligence & Safety Alerts",
+        description: "Get risk scores and warning indicators before applying to client jobs",
+        included: true,
+      },
+      {
+        name: "Dynamic Rate & Pricing Calculator",
+        description: "Receive scope-based rate recommendations to price your services confidently",
         included: true,
       },
       {
         name: "Portfolio & Skill Matcher",
-        description: "Automatically match past projects & case studies to client briefs",
-        included: true,
-      },
-      {
-        name: "Priority 24/7 Support",
-        description: "Fast-track email & chat support for urgent proposal deadlines",
+        description: "Match your past projects & case studies directly to client requirements",
         included: true,
       },
     ],
