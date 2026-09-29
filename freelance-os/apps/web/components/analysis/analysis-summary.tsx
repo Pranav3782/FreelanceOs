@@ -233,34 +233,34 @@ export function AnalysisSummary({ result, state }: AnalysisSummaryProps) {
         className="space-y-3.5"
       >
         {/* ── Top Lifecycle Action Bar ── */}
-        <div className="flex items-center gap-2 p-2.5 bg-gradient-to-r from-blue-50/90 via-slate-50 to-indigo-50/70 rounded-xl border border-blue-200/60 shadow-2xs">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 p-3 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900 rounded-2xl border border-slate-800 text-white shadow-md">
           {isApplied ? (
             <Button
               size="sm"
               disabled
-              className="bg-emerald-600 text-white font-semibold text-xs h-8.5 gap-1.5 flex-1 cursor-default opacity-100 shadow-2xs"
+              className="bg-emerald-600/90 text-white font-semibold text-xs h-9 gap-1.5 flex-1 cursor-default opacity-100 shadow-2xs border border-emerald-500/30"
             >
               <CheckCircle2 className="h-4 w-4" />
-              In Applied Pipeline
+              <span>In Applied Pipeline</span>
             </Button>
           ) : (
             <Button
               size="sm"
               onClick={handleAddToApplied}
-              className="bg-primary hover:bg-primary/90 text-white font-semibold text-xs h-8.5 gap-1.5 flex-1 shadow-sm transition-all"
+              className="bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs h-9 gap-1.5 flex-1 shadow-md transition-all border border-blue-500/40"
             >
               <Zap className="h-3.5 w-3.5 text-amber-300 fill-amber-300" />
-              Add to Applied
+              <span>Add to Applied</span>
             </Button>
           )}
 
-          <Link href={`/applications/${client.projectId || result.id}`}>
+          <Link href={`/applications/${client.projectId || result.id}`} className="flex-1 sm:flex-none">
             <Button
               variant="outline"
               size="sm"
-              className="h-8.5 text-xs font-semibold gap-1.5 bg-white hover:bg-slate-50 border-border/80 shadow-2xs text-slate-800"
+              className="h-9 w-full sm:w-auto text-xs font-semibold gap-1.5 bg-slate-800/80 hover:bg-slate-700 text-slate-200 border-slate-700 shadow-2xs"
             >
-              <Eye className="h-3.5 w-3.5 text-slate-500" />
+              <Eye className="h-3.5 w-3.5 text-blue-400" />
               <span>Full Dossier</span>
               <ExternalLink className="h-3 w-3 text-slate-400" />
             </Button>

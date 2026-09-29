@@ -54,7 +54,11 @@ const DEFAULT_PROFILE: PersonalProfileData = {
   website: "",
 };
 
-export function PersonalInfoForm() {
+interface PersonalInfoFormProps {
+  initialStep?: 1 | 2 | 3 | 4 | 5;
+}
+
+export function PersonalInfoForm({ initialStep = 1 }: PersonalInfoFormProps = {}) {
   const [profile, setProfile] = useState<PersonalProfileData>(DEFAULT_PROFILE);
   const [geminiApiKey, setGeminiApiKey] = useState(() => AISettingsStorage.get().geminiApiKey || "");
   const [showGeminiKey, setShowGeminiKey] = useState(false);
@@ -62,7 +66,7 @@ export function PersonalInfoForm() {
   const [savedNotice, setSavedNotice] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4 | 5>(1);
+  const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4 | 5>(initialStep);
   const { user } = useAuth();
 
   // Load from LocalStorage or Firestore on mount
@@ -70,13 +74,19 @@ export function PersonalInfoForm() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        setProfile(JSON.parse(stored));
+        const parsed = JSON.parse(stored);
+        setProfile({
+          ...DEFAULT_PROFILE,
+          ...parsed,
+          skills: Array.isArray(parsed?.skills) ? parsed.skills : DEFAULT_PROFILE.skills,
+        });
       } else if (user) {
         setProfile((prev) => ({
           ...prev,
           fullName: user.displayName || prev.fullName,
           email: user.email || prev.email,
           displayName: user.displayName ? `@${user.displayName.toLowerCase().replace(/\s+/g, "")}` : prev.displayName,
+          skills: Array.isArray(prev?.skills) ? prev.skills : DEFAULT_PROFILE.skills,
         }));
       }
       const existingKey = AISettingsStorage.get().geminiApiKey;
@@ -93,8 +103,13 @@ export function PersonalInfoForm() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data() as PersonalProfileData;
-          setProfile(data);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          const merged: PersonalProfileData = {
+            ...DEFAULT_PROFILE,
+            ...data,
+            skills: Array.isArray(data?.skills) ? data.skills : DEFAULT_PROFILE.skills,
+          };
+          setProfile(merged);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
         }
 
         // Also check root user record for stored Gemini API key
@@ -122,8 +137,12 @@ export function PersonalInfoForm() {
   const handleAddSkill = () => {
     if (!newSkill.trim()) return;
     const trimmed = newSkill.trim();
-    if (!profile.skills.includes(trimmed)) {
-      setProfile((prev) => ({ ...prev, skills: [...prev.skills, trimmed] }));
+    const currentSkills = Array.isArray(profile?.skills) ? profile.skills : [];
+    if (!currentSkills.includes(trimmed)) {
+      setProfile((prev) => ({
+        ...prev,
+        skills: [...(Array.isArray(prev?.skills) ? prev.skills : []), trimmed],
+      }));
     }
     setNewSkill("");
   };
@@ -131,7 +150,7 @@ export function PersonalInfoForm() {
   const handleRemoveSkill = (skillToRemove: string) => {
     setProfile((prev) => ({
       ...prev,
-      skills: prev.skills.filter((s) => s !== skillToRemove),
+      skills: (Array.isArray(prev?.skills) ? prev.skills : []).filter((s) => s !== skillToRemove),
     }));
   };
 
@@ -572,37 +591,44 @@ export function PersonalInfoForm() {
                     <Plus className="h-4 w-4" />
                   </Button>
                 </div>
-                {profile.skills.length > 0 && (
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    <AnimatePresence>
-                      {profile.skills.map((skill) => (
-                        <motion.div
-                          key={skill}
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          exit={{ scale: 0.8, opacity: 0 }}
-                        >
-                          <Badge
-                            variant="secondary"
-                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-800"
-                          >
-                            {skill}
-                            <button
-                              type="button"
-                              onClick={() => handleRemoveSkill(skill)}
-                              className="rounded-full p-0.5 hover:bg-slate-300 transition-colors"
-                            >
-                              <X className="h-3 w-3" />
-                            </button>
-                          </Badge>
-                        </motion.div>
-                      ))}
-                    </AnimatePresence>
-                  </div>
-                )}
-                {profile.skills.length === 0 && (
-                  <p className="text-xs text-muted-foreground">No skills added yet.</p>
-                )}
+                {(() => {
+                  const skillsList = Array.isArray(profile?.skills) ? profile.skills : [];
+                  return (
+                    <>
+                      {skillsList.length > 0 && (
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <AnimatePresence>
+                            {skillsList.map((skill) => (
+                              <motion.div
+                                key={skill}
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.8, opacity: 0 }}
+                              >
+                                <Badge
+                                  variant="secondary"
+                                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-800"
+                                >
+                                  {skill}
+                                  <button
+                                    type="button"
+                                    onClick={() => handleRemoveSkill(skill)}
+                                    className="rounded-full p-0.5 hover:bg-slate-300 transition-colors"
+                                  >
+                                    <X className="h-3 w-3" />
+                                  </button>
+                                </Badge>
+                              </motion.div>
+                            ))}
+                          </AnimatePresence>
+                        </div>
+                      )}
+                      {skillsList.length === 0 && (
+                        <p className="text-xs text-muted-foreground">No skills added yet.</p>
+                      )}
+                    </>
+                  );
+                })()}
               </div>
             </div>
           </motion.div>

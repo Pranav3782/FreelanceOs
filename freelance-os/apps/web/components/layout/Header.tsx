@@ -60,6 +60,7 @@ const NAVIGATION = [
     href: "/profile/personal",
     items: [
       { title: "Personal Information", href: "/profile/personal" },
+      { title: "Core Skills", href: "/profile/skills" },
       { title: "Portfolio", href: "/profile/portfolio" },
       { title: "Portfolio Builder", href: "/profile/portfolio/builder" },
     ],

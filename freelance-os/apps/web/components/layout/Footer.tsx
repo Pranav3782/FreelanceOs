@@ -30,6 +30,7 @@ const NAVIGATION_SECTIONS = [
     items: [
       { name: "About", href: "/about" },
       { name: "How It Works", href: "/how-it-works" },
+      { name: "Team", href: "/team" },
     ],
   },
   {

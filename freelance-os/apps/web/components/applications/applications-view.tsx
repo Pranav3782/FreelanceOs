@@ -676,7 +676,7 @@ function AddApplicationModal({
   const [clientName, setClientName] = useState("");
   const [stage, setStage] = useState<ApplicationStage>("applied");
   const [value, setValue] = useState("");
-  const [matchScore, setMatchScore] = useState("85");
+  const [matchScore, setMatchScore] = useState("");
   const [platform, setPlatform] = useState("Upwork");
   const [notes, setNotes] = useState("");
 
@@ -684,13 +684,20 @@ function AddApplicationModal({
     e.preventDefault();
     if (!projectTitle.trim() || !clientName.trim()) return;
 
+    const parsedScore = matchScore.trim() ? parseInt(matchScore, 10) : 0;
+    const formattedValue = value.trim()
+      ? value.startsWith("$")
+        ? value.trim()
+        : `$${value.trim()}`
+      : "Not specified";
+
     const newApp: ApplicationItem = {
       id: `app-${Date.now()}`,
       projectTitle: projectTitle.trim(),
       clientName: clientName.trim(),
       stage,
-      value: value.trim() ? (value.startsWith("$") ? value.trim() : `$${value.trim()}`) : "$1,000",
-      matchScore: parseInt(matchScore, 10) || 80,
+      value: formattedValue,
+      matchScore: !isNaN(parsedScore) ? Math.min(100, Math.max(0, parsedScore)) : 0,
       appliedDate: new Date().toISOString().split("T")[0],
       lastActivity: `Logged application on ${new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" })}`,
       notes: notes.trim(),
@@ -701,16 +708,27 @@ function AddApplicationModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
-      <div className="w-full max-w-md rounded-xl border border-border/70 bg-white p-6 shadow-xl animate-in fade-in zoom-in-95 duration-150">
-        <h2 className="text-lg font-bold text-foreground">Log New Application</h2>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          Record a submitted freelance application to track its client response lifecycle.
-        </p>
-
-        <form onSubmit={handleSubmit} className="mt-5 space-y-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm overflow-y-auto animate-in fade-in duration-200">
+      <div className="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 shadow-2xl animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-4">
           <div>
-            <label className="block text-xs font-semibold text-foreground mb-1">
+            <h2 className="text-base sm:text-lg font-bold text-slate-900">Log New Application</h2>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Record a submitted freelance proposal to track client responses.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-full p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+          >
+            <XCircle className="h-5 w-5" />
+          </button>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-xs font-semibold text-slate-900 mb-1">
               Project Title *
             </label>
             <input
@@ -719,13 +737,13 @@ function AddApplicationModal({
               placeholder="e.g. Next.js SaaS MVP Development"
               value={projectTitle}
               onChange={(e) => setProjectTitle(e.target.value)}
-              className="w-full rounded-lg border border-border px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-foreground mb-1">
+              <label className="block text-xs font-semibold text-slate-900 mb-1">
                 Client / Company *
               </label>
               <input
@@ -734,18 +752,18 @@ function AddApplicationModal({
                 placeholder="e.g. Acme Corp"
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
-                className="w-full rounded-lg border border-border px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground mb-1">
+              <label className="block text-xs font-semibold text-slate-900 mb-1">
                 Platform
               </label>
               <select
                 value={platform}
                 onChange={(e) => setPlatform(e.target.value)}
-                className="w-full rounded-lg border border-border px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring bg-white"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900 bg-white"
               >
                 <option value="Upwork">Upwork</option>
                 <option value="Direct Client">Direct Client</option>
@@ -756,15 +774,15 @@ function AddApplicationModal({
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-foreground mb-1">
+              <label className="block text-xs font-semibold text-slate-900 mb-1">
                 Stage
               </label>
               <select
                 value={stage}
                 onChange={(e) => setStage(e.target.value as ApplicationStage)}
-                className="w-full rounded-lg border border-border px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring bg-white"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900 bg-white"
               >
                 <option value="new">New / Analyzed</option>
                 <option value="applied">Applied</option>
@@ -775,35 +793,36 @@ function AddApplicationModal({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground mb-1">
+              <label className="block text-xs font-semibold text-slate-900 mb-1">
                 Value ($)
               </label>
               <input
                 type="text"
-                placeholder="1,500"
+                placeholder="e.g. 2,500"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                className="w-full rounded-lg border border-border px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground mb-1">
+              <label className="block text-xs font-semibold text-slate-900 mb-1">
                 Match Score %
               </label>
               <input
                 type="number"
                 min="0"
                 max="100"
+                placeholder="e.g. 90"
                 value={matchScore}
                 onChange={(e) => setMatchScore(e.target.value)}
-                className="w-full rounded-lg border border-border px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-foreground mb-1">
+            <label className="block text-xs font-semibold text-slate-900 mb-1">
               Notes / Strategy
             </label>
             <textarea
@@ -811,21 +830,25 @@ function AddApplicationModal({
               placeholder="Key deliverables pitched, follow-up timeline..."
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full rounded-lg border border-border px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring resize-none"
+              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 resize-none"
             />
           </div>
 
-          <div className="flex items-center justify-end gap-2 pt-2">
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-end gap-2.5 pt-4 mt-6 border-t border-slate-100">
             <Button
               type="button"
               variant="outline"
               size="sm"
               onClick={onClose}
-              className="h-8.5 text-xs font-medium"
+              className="w-full sm:w-auto h-9 px-4 text-xs font-semibold border-slate-300 text-slate-700 hover:bg-slate-100 transition-colors"
             >
               Cancel
             </Button>
-            <Button type="submit" size="sm" className="h-8.5 text-xs font-semibold">
+            <Button
+              type="submit"
+              size="sm"
+              className="w-full sm:w-auto h-9 px-5 text-xs font-bold bg-slate-900 text-white hover:bg-slate-800 shadow-sm transition-all"
+            >
               Save Application
             </Button>
           </div>

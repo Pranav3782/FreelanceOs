@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { User, Briefcase, ExternalLink, CheckCircle2 } from "lucide-react";
+import { User, Briefcase, Code2, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 interface ProfileNavProps {
-  activeTab: "personal" | "portfolio";
+  activeTab: "personal" | "portfolio" | "skills";
 }
 
 export function ProfileNav({ activeTab }: ProfileNavProps) {
@@ -28,7 +28,7 @@ export function ProfileNav({ activeTab }: ProfileNavProps) {
             </Badge>
           </div>
           <p className="text-xs text-muted-foreground mt-1">
-            Manage your personal identity, contact channels, and portfolio showcase.
+            Manage your personal identity, core technical skills, and portfolio showcase.
           </p>
         </div>
 
@@ -39,12 +39,12 @@ export function ProfileNav({ activeTab }: ProfileNavProps) {
         </div>
       </div>
 
-      {/* ── 2 Main Submenus (Personal Information & Portfolio) ── */}
-      <div className="flex items-center gap-2 border-b border-border/50 pb-px">
+      {/* ── Main Submenus (Personal Info, Core Skills, Portfolio) ── */}
+      <div className="flex items-center gap-2 border-b border-border/50 pb-px overflow-x-auto">
         <Link
           href="/profile/personal"
           className={cn(
-            "flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-t-lg transition-all border-b-2 -mb-px",
+            "flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-t-lg transition-all border-b-2 -mb-px whitespace-nowrap",
             activeTab === "personal"
               ? "border-primary text-foreground bg-white shadow-2xs font-bold"
               : "border-transparent text-muted-foreground hover:text-foreground hover:bg-slate-50"
@@ -55,9 +55,22 @@ export function ProfileNav({ activeTab }: ProfileNavProps) {
         </Link>
 
         <Link
+          href="/profile/skills"
+          className={cn(
+            "flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-t-lg transition-all border-b-2 -mb-px whitespace-nowrap",
+            activeTab === "skills"
+              ? "border-primary text-foreground bg-white shadow-2xs font-bold"
+              : "border-transparent text-muted-foreground hover:text-foreground hover:bg-slate-50"
+          )}
+        >
+          <Code2 className="h-3.5 w-3.5" />
+          <span>Core Skills</span>
+        </Link>
+
+        <Link
           href="/profile/portfolio"
           className={cn(
-            "flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-t-lg transition-all border-b-2 -mb-px",
+            "flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-t-lg transition-all border-b-2 -mb-px whitespace-nowrap",
             activeTab === "portfolio"
               ? "border-primary text-foreground bg-white shadow-2xs font-bold"
               : "border-transparent text-muted-foreground hover:text-foreground hover:bg-slate-50"

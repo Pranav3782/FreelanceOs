@@ -190,8 +190,11 @@ interface DomainProbeResult {
   whatsappFound: string[];
 }
 
-async function verifyDomain(domain: string): Promise<DomainProbeResult> {
-  if (!isSafePublicDomain(domain)) {
+async function verifyDomain(domainOrUrl: string): Promise<DomainProbeResult> {
+  const isFullUrl = domainOrUrl.startsWith("http://") || domainOrUrl.startsWith("https://");
+  const extractedHost = domainOrUrl.trim().toLowerCase().replace(/^https?:\/\//, "").replace(/\/.*$/, "").replace(/:\d+$/, "");
+  
+  if (!isSafePublicDomain(extractedHost)) {
     return {
       verified: false,
       url: "",
@@ -201,8 +204,7 @@ async function verifyDomain(domain: string): Promise<DomainProbeResult> {
     };
   }
 
-  const clean = domain.trim().toLowerCase().replace(/^https?:\/\//, "").replace(/\/.*$/, "").replace(/:\d+$/, "");
-  const targetUrl = `https://${clean}`;
+  const targetUrl = isFullUrl ? domainOrUrl.trim() : `https://${extractedHost}`;
   const emails: string[] = [];
   const phones: string[] = [];
   const whatsapps: string[] = [];
@@ -210,10 +212,10 @@ async function verifyDomain(domain: string): Promise<DomainProbeResult> {
   try {
     const res = await fetch(targetUrl, {
       method: "GET",
-      signal: AbortSignal.timeout(3500),
+      signal: AbortSignal.timeout(4500),
       headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) FreelanceOS-Research/1.0",
-        Accept: "text/html,application/xhtml+xml",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Apple-WebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 FreelanceOS-Scraper/1.0",
+        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
       },
     });
 
