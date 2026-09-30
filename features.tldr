@@ -568,7 +568,7 @@
 			"id": "shape:yIWTyGMHZD0Tbx9cBGG6v",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 631.0689194018532,
 				"font": "draw",
@@ -619,9 +619,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 2838.869035818686,
-			"y": -1138.639534481388,
-			"z": 0.129655242079037,
+			"x": 2665.4402355385437,
+			"y": -1281.6125532869285,
+			"z": 0.22301604929099633,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -780,7 +780,7 @@
 			"id": "shape:lvJ3-4-HgI-zZ_6i6YJCW",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 664.0967213239528,
 				"font": "draw",
@@ -1633,7 +1633,7 @@
 			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:kWIocJPePIqyzlIWJSd0C"
+				"shape:7yoDLBKDnNrnVL_tWQl01"
 			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
@@ -1978,7 +1978,7 @@
 			"id": "shape:7yoDLBKDnNrnVL_tWQl01",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 711.4039049774153,
 				"font": "draw",
@@ -2888,7 +2888,7 @@
 			"id": "shape:QSk-2tElznncha5U7_Yo5",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 700.8305363926576,
 				"font": "draw",
@@ -3068,7 +3068,7 @@
 			"id": "shape:T20OmsH1xvHOrBvUYgqy_",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 644.1875,
 				"font": "draw",
@@ -3302,7 +3302,7 @@
 			"id": "shape:oJcMNcTNkH8S08-sdbxg4",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 680.5035662451583,
 				"font": "draw",
@@ -3622,7 +3622,7 @@
 			"id": "shape:6q0MciB4TACNdQt1MKJsg",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 717.9963314370655,
 				"font": "draw",
@@ -4384,7 +4384,7 @@
 			"type": "geo",
 			"props": {
 				"w": 789.523545917303,
-				"h": 5035.00578290075,
+				"h": 5212.645997582437,
 				"geo": "rectangle",
 				"dash": "draw",
 				"growY": 0,
@@ -4550,14 +4550,15 @@
 			"followingUserId": null,
 			"opacityForNextShape": 1,
 			"stylesForNextShape": {
-				"tldraw:color": "black",
+				"tldraw:color": "light-green",
 				"tldraw:geo": "rectangle",
-				"tldraw:size": "xl"
+				"tldraw:size": "xl",
+				"tldraw:dash": "draw"
 			},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "nwse-resize",
+				"type": "default",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -4585,9 +4586,9 @@
 			"isFocused": true,
 			"devicePixelRatio": 1.25,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
+			"isHoveringCanvas": false,
 			"openMenus": [],
-			"isChangingStyle": false,
+			"isChangingStyle": true,
 			"isReadonly": false,
 			"meta": {},
 			"duplicateProps": null,
@@ -4897,7 +4898,7 @@
 			"id": "shape:fvZhDWeAP7QOh6Xi6bAwh",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 691.5943667829677,
 				"font": "draw",
