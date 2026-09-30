@@ -18,7 +18,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useAuth } from "@/components/providers/AuthContext";
 import {
   DropdownMenu,
@@ -120,7 +119,7 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
         >
           <motion.ul variants={staggerVariants} className="flex h-full flex-col">
             <div className="flex grow flex-col items-center">
-              
+
               {/* Logo Section */}
               <div className="flex h-[60px] w-full shrink-0 border-b px-2 py-3">
                 <Link href="/dashboard" className="flex w-full items-center px-1" onClick={() => isMobileOpen && onMobileClose()}>
@@ -140,12 +139,12 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
                 <div className="flex grow flex-col gap-4">
                   <ScrollArea className="h-16 grow p-3 py-4">
                     <div className="flex w-full flex-col gap-1">
-                      
+
                       {/* Primary action */}
                       <Link href="/analyze" onClick={() => isMobileOpen && onMobileClose()} className={cn(
                         "mb-3 flex h-9 w-full flex-row items-center rounded-md px-2 transition-colors",
-                        pathname?.includes("analyze") 
-                          ? "bg-primary text-primary-foreground hover:bg-primary/90" 
+                        pathname?.includes("analyze")
+                          ? "bg-primary text-primary-foreground hover:bg-primary/90"
                           : "bg-muted text-foreground hover:bg-muted/80"
                       )}>
                         <div className="flex shrink-0 w-5 items-center justify-center">
@@ -162,8 +161,8 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
 
                       <Link href="/dashboard" onClick={() => isMobileOpen && onMobileClose()} className={cn(
                         "flex h-9 w-full flex-row items-center rounded-md px-2 transition-colors",
-                        pathname === "/dashboard" 
-                          ? "bg-black/[0.04] text-foreground font-medium" 
+                        pathname === "/dashboard"
+                          ? "bg-black/[0.04] text-foreground font-medium"
                           : "text-muted-foreground hover:bg-muted hover:text-foreground"
                       )}>
                         <div className="flex shrink-0 w-5 items-center justify-center">
@@ -173,11 +172,11 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
                           {(!isCollapsed || isMobileOpen) && <p className="ml-3 truncate text-[13.5px]">Dashboard</p>}
                         </motion.li>
                       </Link>
-                      
+
                       <Link href="/history" onClick={() => isMobileOpen && onMobileClose()} className={cn(
                         "flex h-9 w-full flex-row items-center rounded-md px-2 transition-colors",
-                        pathname?.includes("history") 
-                          ? "bg-black/[0.04] text-foreground font-medium" 
+                        pathname?.includes("history")
+                          ? "bg-black/[0.04] text-foreground font-medium"
                           : "text-muted-foreground hover:bg-muted hover:text-foreground"
                       )}>
                         <div className="flex shrink-0 w-5 items-center justify-center">
@@ -187,11 +186,11 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
                           {(!isCollapsed || isMobileOpen) && <p className="ml-3 truncate text-[13.5px]">Analysis History</p>}
                         </motion.li>
                       </Link>
-                      
+
                       <Link href="/applications" onClick={() => isMobileOpen && onMobileClose()} className={cn(
                         "flex h-9 w-full flex-row items-center rounded-md px-2 transition-colors",
-                        pathname?.includes("applications") 
-                          ? "bg-black/[0.04] text-foreground font-medium" 
+                        pathname?.includes("applications")
+                          ? "bg-black/[0.04] text-foreground font-medium"
                           : "text-muted-foreground hover:bg-muted hover:text-foreground"
                       )}>
                         <div className="flex shrink-0 w-5 items-center justify-center">
@@ -201,16 +200,16 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
                           {(!isCollapsed || isMobileOpen) && <p className="ml-3 truncate text-[13.5px]">Applications</p>}
                         </motion.li>
                       </Link>
-                      
+
                     </div>
                   </ScrollArea>
                 </div>
-                
+
                 <div className="flex flex-col border-t border-border/50 p-3 pb-4">
                   <Link href="/settings" onClick={() => isMobileOpen && onMobileClose()} className={cn(
                     "mb-1 flex h-9 w-full flex-row items-center rounded-md px-2 transition-colors",
-                    pathname?.includes("settings") 
-                      ? "bg-black/[0.04] text-foreground font-medium" 
+                    pathname?.includes("settings")
+                      ? "bg-black/[0.04] text-foreground font-medium"
                       : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   )}>
                     <div className="flex shrink-0 w-5 items-center justify-center">
@@ -221,11 +220,6 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
                     </motion.li>
                   </Link>
 
-                  {/* Dark / Light Theme Toggle */}
-                  <div className="px-1.5 py-1">
-                    <ThemeToggle showLabel={!isCollapsed || isMobileOpen} className="w-full justify-start text-xs font-semibold" />
-                  </div>
-                  
                   <div>
                     <DropdownMenu modal={false}>
                       <DropdownMenuTrigger className="w-full outline-none" asChild>

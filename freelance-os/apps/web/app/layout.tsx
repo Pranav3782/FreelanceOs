@@ -28,7 +28,6 @@ import "./globals.css";
 // Global State & Context Providers
 import { AuthProvider } from "@/components/providers/AuthContext";
 import { UserPreferencesProvider } from "@/contexts/UserPreferencesContext";
-import { ThemeProvider } from "@/contexts/ThemeContext";
 
 // Navigation & Layout Components
 import { TopNavWrapper } from "@/components/layout/TopNavWrapper";
@@ -52,47 +51,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                var t = localStorage.getItem("freelanceos_theme");
-                if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-                  document.documentElement.classList.add("dark");
-                } else {
-                  document.documentElement.classList.remove("dark");
-                }
-              } catch (e) {}
-            `,
-          }}
-        />
-      </head>
-      <body className="min-h-screen bg-background flex flex-col font-sans antialiased text-foreground transition-colors duration-200">
+    <html lang="en">
+      <body className="min-h-screen bg-background flex flex-col font-sans antialiased text-foreground">
 
-        {/* Core Theme Provider - manages light & dark theme states */}
-        <ThemeProvider>
+        {/* Core Authentication Provider - enables login/session across all routes */}
+        <AuthProvider>
 
-          {/* Core Authentication Provider - enables login/session across all routes */}
-          <AuthProvider>
+          {/* User Preferences Provider - provides currency, locale, and workspace configs */}
+          <UserPreferencesProvider>
 
-            {/* User Preferences Provider - provides currency, locale, and workspace configs */}
-            <UserPreferencesProvider>
+            {/* Smart Navigation Wrapper - conditionally shows header based on route */}
+            <TopNavWrapper />
 
-              {/* Smart Navigation Wrapper - conditionally shows header based on route */}
-              <TopNavWrapper />
+            {/* Main Content Area - dynamically populated by route segments */}
+            <div className="flex-1 flex flex-col w-full">
+              {children}
+            </div>
 
-              {/* Main Content Area - dynamically populated by route segments */}
-              <div className="flex-1 flex flex-col w-full">
-                {children}
-              </div>
+          </UserPreferencesProvider>
 
-            </UserPreferencesProvider>
-
-          </AuthProvider>
-
-        </ThemeProvider>
+        </AuthProvider>
 
       </body>
     </html>

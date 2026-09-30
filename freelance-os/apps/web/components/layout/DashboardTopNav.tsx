@@ -17,7 +17,6 @@ import {
   Plus
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const NAV_ITEMS = [
   { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
@@ -85,14 +84,12 @@ export function DashboardTopNav() {
               <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-blue-500" />
             </Button>
 
-            <ThemeToggle />
-
             <Link href="/profile" className="hidden sm:block">
               <Button variant="ghost" size="icon" className="rounded-lg text-muted-foreground hover:text-foreground">
                 <User className="h-5 w-5" />
               </Button>
             </Link>
-            
+
             <Link href="/settings" className="hidden sm:block">
               <Button variant="ghost" size="icon" className="rounded-lg text-muted-foreground hover:text-foreground">
                 <Settings className="h-5 w-5" />
