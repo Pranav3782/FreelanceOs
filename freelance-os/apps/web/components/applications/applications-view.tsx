@@ -38,6 +38,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Table } from "@/components/ui/heroui-table";
 import {
   DropdownMenu,
   DropdownMenuContent,
