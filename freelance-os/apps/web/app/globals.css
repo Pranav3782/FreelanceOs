@@ -28,6 +28,28 @@
     --radius: 0.625rem;
   }
 
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 96%;
+    --card: 224 71% 6%;
+    --card-foreground: 213 31% 96%;
+    --popover: 224 71% 6%;
+    --popover-foreground: 213 31% 96%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 215 27.9% 15%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 27.9% 15%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 15%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+  }
+
   * {
     border-color: hsl(var(--border));
   }
@@ -39,6 +61,13 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  html.dark,
+  body.dark {
+    background-color: #0b0f17 !important;
+    color: #f8fafc !important;
   }
 }
 

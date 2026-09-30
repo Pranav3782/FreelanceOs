@@ -23,6 +23,8 @@ import {
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/components/providers/AuthContext";
 
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+
 /* =========================================================================
    Navigation Schema & Hierarchy
    ========================================================================= */
@@ -219,12 +221,15 @@ export const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="relative h-9 w-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-black/[0.04]"
+            className="relative h-9 w-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-black/[0.04] dark:hover:bg-white/[0.06]"
             title="Reminders & Notifications"
           >
             <Bell className="h-4.5 w-4.5" />
-            <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-blue-500 ring-2 ring-white" />
+            <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-blue-500 ring-2 ring-white dark:ring-slate-900" />
           </Button>
+
+          {/* 4. Global Dark / Light Theme Toggle */}
+          <ThemeToggle />
 
           {/* 4. Profile Avatar */}
           <DropdownMenu modal={false}>

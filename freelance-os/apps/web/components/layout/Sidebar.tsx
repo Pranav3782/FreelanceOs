@@ -18,6 +18,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useAuth } from "@/components/providers/AuthContext";
 import {
   DropdownMenu,
@@ -219,6 +220,11 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
                       {(!isCollapsed || isMobileOpen) && <p className="ml-3 truncate text-[13.5px]">Settings</p>}
                     </motion.li>
                   </Link>
+
+                  {/* Dark / Light Theme Toggle */}
+                  <div className="px-1.5 py-1">
+                    <ThemeToggle showLabel={!isCollapsed || isMobileOpen} className="w-full justify-start text-xs font-semibold" />
+                  </div>
                   
                   <div>
                     <DropdownMenu modal={false}>

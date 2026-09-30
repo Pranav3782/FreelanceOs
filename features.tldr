@@ -43,6 +43,66 @@
 			"typeName": "pointer"
 		},
 		{
+			"x": -3517.527670093841,
+			"y": 1392.0957894721048,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:iyVi6y4lM-USsQ8lmM-uo",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1663.5979442724945,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 11,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "and if incase there is any brand info make sure to check the brand details seperately in google return those details basic google business page details ( phnum, website )"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0Alk2",
+			"typeName": "shape"
+		},
+		{
 			"x": 197.83434382842734,
 			"y": 2018.9308922475088,
 			"rotation": 0,
@@ -52,7 +112,7 @@
 			"id": "shape:qxFAMo5KGL5Q4isQXinN8",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 918.0758906936145,
 				"font": "draw",
@@ -109,6 +169,66 @@
 			"meta": {},
 			"id": "user:6g2rgli4aeQpMYlb5EkVr",
 			"typeName": "user"
+		},
+		{
+			"x": -1187.1706731226864,
+			"y": 724.7280667300029,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:571X5GI7a91BPdPaa89Yj",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 704.7471326253576,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 6,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "reminders should appear in the notification icon"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "asBXz",
+			"typeName": "shape"
 		},
 		{
 			"x": 2603.2632047298302,
@@ -238,6 +358,45 @@
 			},
 			"parentId": "page:page",
 			"index": "a26KM",
+			"typeName": "shape"
+		},
+		{
+			"x": -1198.9716401333708,
+			"y": -392.2064874134935,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:qysjsz4NqptDXbiEwd2l9",
+			"type": "geo",
+			"props": {
+				"w": 627.5722808172775,
+				"h": 127.85803853900808,
+				"geo": "rectangle",
+				"dash": "draw",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"flipX": false,
+				"flipY": false,
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"size": "xl",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "akKiQ",
 			"typeName": "shape"
 		},
 		{
@@ -400,12 +559,156 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 235.22316395420842,
-			"y": -1105.2439642942657,
-			"z": 0.3167586646508597,
+			"x": -1190.9604740849363,
+			"y": 81.705984360598,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:yIWTyGMHZD0Tbx9cBGG6v",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 631.0689194018532,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 3,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "keep the settings option in the profile avatar"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "apwyA",
+			"typeName": "shape"
+		},
+		{
+			"x": 2838.869035818686,
+			"y": -1138.639534481388,
+			"z": 0.129655242079037,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
+		},
+		{
+			"x": -1031.8945832291874,
+			"y": -355.13830142708457,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:Q80twpqnfxZXrr3x_wqU1",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 273.3625183105469,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "changes - 2"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "amsWr",
+			"typeName": "shape"
+		},
+		{
+			"x": -2532.425534464714,
+			"y": 3238.8827298919564,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:kWIocJPePIqyzlIWJSd0C",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 260.4250183105469,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 2.00848063620087,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "22+15 = 37"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0SUdq",
+			"typeName": "shape"
 		},
 		{
 			"x": 176.4633341824861,
@@ -417,7 +720,7 @@
 			"id": "shape:FQrQT4w7eYBAUPFJrY44B",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 791.7979430477806,
 				"font": "draw",
@@ -465,6 +768,66 @@
 			},
 			"parentId": "page:page",
 			"index": "aiQHf",
+			"typeName": "shape"
+		},
+		{
+			"x": -1195.1289409917642,
+			"y": 1321.0143613107225,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:lvJ3-4-HgI-zZ_6i6YJCW",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 664.0967213239528,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 9,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "in profile page and inside the portfolio section ( buttons should be aligned correctly )"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "avONv",
 			"typeName": "shape"
 		},
 		{
@@ -648,8 +1011,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -963.3816235779068,
-			"y": 65.56421260787965,
+			"x": 2688.8623744997776,
+			"y": 1267.931790391668,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -768,6 +1131,48 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -2925.4186806587722,
+			"y": -285.0496299326163,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:CmXjiyvrgKPpUngymWcVu",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 281.6875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "core feature"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0GHor",
+			"typeName": "shape"
+		},
+		{
 			"x": 184.2623496277165,
 			"y": 3254.6075910696277,
 			"rotation": 0,
@@ -777,7 +1182,7 @@
 			"id": "shape:He1Luy3eZWOWJoPlW9_0I",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 797.4506221432297,
 				"font": "draw",
@@ -828,6 +1233,364 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -3540.9423398058734,
+			"y": 967.4019133869676,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:92FD81V6QL14fl-ufKNd9",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1700.2054402202718,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 8,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "if there is no links or any other kind of info is not presented then return there is no client data present in there"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b07LFn",
+			"typeName": "shape"
+		},
+		{
+			"x": -3542.4057406747165,
+			"y": 1109.7054371771146,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:T0i-crrmrZ6K2PWI0yd9w",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1677.0385162470109,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 9,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "and donot return any kind of fake data or the mock data whichever data is available scrap that one"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b08p9f",
+			"typeName": "shape"
+		},
+		{
+			"x": -1198.5923223270684,
+			"y": 402.30381290051605,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:y7kui0WaR9zbmNlDr_odF",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 688.8682148829972,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 5,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "based on the deadline first when the project is analysed a reminder (mail should sent to the user and before 3 days as well)"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "arP6E",
+			"typeName": "shape"
+		},
+		{
+			"x": -1179.1899414560285,
+			"y": 3050.1130037964676,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:ZxLOwQr59rAD2CP46YUq1",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 690.1155074838903,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 16,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "when the side card is hide the chat component should occupy the whole ui"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0J6mv",
+			"typeName": "shape"
+		},
+		{
+			"x": -1212.1022472442287,
+			"y": 2577.8648488255553,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:GisSTBtTFGwq6gRiOZf83",
+			"type": "text",
+			"props": {
+				"color": "yellow",
+				"size": "xl",
+				"w": 736.7470668912247,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 0.9707237045103395,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "bulletList",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "change the ui in the analysis project page"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "axCa2",
+			"typeName": "shape"
+		},
+		{
+			"x": -3521.100987158115,
+			"y": 1776.451678889462,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:zrPcw5ahXR_d-RQtewmTT",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1669.4525494485415,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 13,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "if there is any contact number in the website other country number then format it by adding country code and check if they are having whatsapp or not"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0CEUT",
+			"typeName": "shape"
+		},
+		{
 			"x": 1396.9172648248637,
 			"y": -222.92845401203147,
 			"rotation": 0,
@@ -867,10 +1630,10 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:ZYNSLYez-Y7o5HN2hIci0",
+			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:ZYNSLYez-Y7o5HN2hIci0"
+				"shape:kWIocJPePIqyzlIWJSd0C"
 			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
@@ -880,6 +1643,111 @@
 			"id": "instance_page_state:page:page",
 			"pageId": "page:page",
 			"typeName": "instance_page_state"
+		},
+		{
+			"x": -3062.9646347239577,
+			"y": -355.9441613123537,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:1Vj4Kh8hOFpOTELRHUE3H",
+			"type": "geo",
+			"props": {
+				"w": 601.3437753091102,
+				"h": 221.90309618671282,
+				"geo": "rectangle",
+				"dash": "draw",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"flipX": false,
+				"flipY": false,
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"size": "xl",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "azGTX",
+			"typeName": "shape"
+		},
+		{
+			"x": -3535.303912887298,
+			"y": 485.66842263677836,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:nOl-9ET6QHUWMxF4SLc6r",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1694.1301318921405,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 5,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "when any kind of link is provided to analyse check whether that is the freelancer project link is valid or not or else atleast can you able to access the link info"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b04Jfb",
+			"typeName": "shape"
 		},
 		{
 			"x": 162.96992591131198,
@@ -942,8 +1810,107 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -975.2887445345253,
-			"y": -9.280492072074708,
+			"x": -3508.491535898778,
+			"y": 2164.121661807224,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:EgmMbqSLALf1t8e_2X43G",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1677.5958522271537,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 15,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "for the project score compare the project tech stack with the profile page user filled tech stack and based on that  give the score if no tech stack is presented understand the project and give whether that project can be done by the tech stack user is having"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0LY9I",
+			"typeName": "shape"
+		},
+		{
+			"x": -3571.979088402749,
+			"y": -45.68777749039191,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:9RZYIBAhpXOmC8wPWerYF",
+			"type": "geo",
+			"props": {
+				"w": 1743.3623373299697,
+				"h": 3106.9965818996684,
+				"geo": "rectangle",
+				"dash": "draw",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"flipX": false,
+				"flipY": false,
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"size": "xl",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "ayrxX",
+			"typeName": "shape"
+		},
+		{
+			"x": 2676.955253543159,
+			"y": 1193.0870857117138,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1002,8 +1969,248 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -1000.7353472842251,
-			"y": -423.63713472318545,
+			"x": -1180.0187681785633,
+			"y": 2443.0060340564605,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:7yoDLBKDnNrnVL_tWQl01",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 711.4039049774153,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 13,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "teams page responsive in the mobile view"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0FkfE",
+			"typeName": "shape"
+		},
+		{
+			"x": -1184.224003699327,
+			"y": 3370.8135926182126,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:JYE3qq1V7yjjjgo6gHlP3",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 696.8172369926021,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 18,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "the search bar present in the all applications page align it properly"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0NwNM",
+			"typeName": "shape"
+		},
+		{
+			"x": -3541.5251293104257,
+			"y": 681.2915826833666,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:mDkcQAaKDAScpTJYErSbK",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1692.3231314854197,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 6,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "when any text is pasted analyse the whole text and understand it if there are contact links then provide those links "
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b05Saf",
+			"typeName": "shape"
+		},
+		{
+			"x": -1186.2981513482614,
+			"y": 2906.8328773374983,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:ec3FgiR_1KKvb9qh__piR",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 715.8633406918893,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 15,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "side cards replace with the 21st dev card component"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0Ipir",
+			"typeName": "shape"
+		},
+		{
+			"x": 2651.5086507934593,
+			"y": 778.730443060603,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1050,6 +2257,66 @@
 			},
 			"parentId": "page:page",
 			"index": "aK2ar",
+			"typeName": "shape"
+		},
+		{
+			"x": -1181.5541034401112,
+			"y": 2184.7106140297687,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:AVHwLNC-tWRVHDsYTWBT5",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 697.5997184373659,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 12,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "add teamates photos there and their linkdin profile as well , github profile collab for the project repo"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0EUv1",
 			"typeName": "shape"
 		},
 		{
@@ -1162,7 +2429,7 @@
 			"id": "shape:Rv51FW6GB0w9EUXskX4dA",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 781.5531591274404,
 				"font": "draw",
@@ -1273,8 +2540,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -1020.3655819343445,
-			"y": -184.91028284998913,
+			"x": 2631.87841614334,
+			"y": 1017.4572949337994,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1309,6 +2576,66 @@
 			},
 			"parentId": "page:page",
 			"index": "aLyDX",
+			"typeName": "shape"
+		},
+		{
+			"x": -1191.2679063627281,
+			"y": 216.1690562265876,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:NKb-pprAIvzLk_qM73fCG",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 640.5600672429878,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 4,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "while analysing the project deadline should come"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aqzUUl",
 			"typeName": "shape"
 		},
 		{
@@ -1381,7 +2708,7 @@
 			"id": "shape:ccXgMBDIDBX9aKkCeytpb",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 780.123350707014,
 				"font": "draw",
@@ -1429,6 +2756,66 @@
 			},
 			"parentId": "page:page",
 			"index": "aUVDf",
+			"typeName": "shape"
+		},
+		{
+			"x": -3543.0598011149764,
+			"y": 404.2669044740959,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:Dx_fK9ROT6mJpW4H8AQs3",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1697.862548828125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 4,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "when a normal message is sent by the user just reply it in a casual way"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b03WQf",
 			"typeName": "shape"
 		},
 		{
@@ -1492,8 +2879,248 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -975.2887445345253,
-			"y": -143.66067175794387,
+			"x": -1184.5260942007753,
+			"y": 1997.62034291801,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:QSk-2tElznncha5U7_Yo5",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 700.8305363926576,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 11,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "replace the teams page by using the 21st dev component"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0DE9E",
+			"typeName": "shape"
+		},
+		{
+			"x": -3537.156116125845,
+			"y": 87.6642496363927,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:u2kI2RmsEr823MwQYCKEH",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1677.6377493857065,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 2,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "and whenever the api is pasted in the profile page then only the analysis should happen"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b01XmA",
+			"typeName": "shape"
+		},
+		{
+			"x": -3531.478038385592,
+			"y": 12.484801931095717,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:xJWvXrYTcNZSH98--hFXE",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1574.7000732421875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 1,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "when user normally asks anything it should reply in a casual way."
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b00UdD",
+			"typeName": "shape"
+		},
+		{
+			"x": -1187.11312122461,
+			"y": -131.03353941819796,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:T20OmsH1xvHOrBvUYgqy_",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 644.1875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 1,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "dark theme toggle button"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "anzru",
+			"typeName": "shape"
+		},
+		{
+			"x": 2676.955253543159,
+			"y": 1058.7069060258445,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1606,6 +3233,186 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -3533.3628106181436,
+			"y": 244.80556154496162,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:RwhUixel6WUyETlTexOxl",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1691.1949271669646,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 3,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "and each and every time analysis should be done using the user pasted api key"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b02htU",
+			"typeName": "shape"
+		},
+		{
+			"x": -1182.6978112289612,
+			"y": 1572.6698062718951,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:oJcMNcTNkH8S08-sdbxg4",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 680.5035662451583,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 10,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "portfolio builder should be working correctly ( for every profile which ever info is there by using that info only the portfolio must be build , and a photo upload option )"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "awwNQ",
+			"typeName": "shape"
+		},
+		{
+			"x": -1183.7297296948298,
+			"y": 3554.972575571789,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:7c2qUZP1EFw9F9npmTyu9",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 655.4293094593452,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 19,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "any project title or key words are searched in the search bar show the related project there"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0OqMQ",
+			"typeName": "shape"
+		},
+		{
 			"x": 190.76149610878838,
 			"y": 3455.4330073507526,
 			"rotation": 0,
@@ -1615,7 +3422,7 @@
 			"id": "shape:80tiIvhINKgTGKSxscFK0",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 825.3768392483809,
 				"font": "draw",
@@ -1726,8 +3533,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -973.5877226201092,
-			"y": 148.9139944156202,
+			"x": 2678.6562754575752,
+			"y": 1351.2815721994086,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1806,6 +3613,66 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -1193.028491986931,
+			"y": 862.3976674276123,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:6q0MciB4TACNdQt1MKJsg",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 717.9963314370655,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 7,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "replace wherever tables are being used with the table component"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "atazN",
+			"typeName": "shape"
+		},
+		{
 			"x": 188.16185735033196,
 			"y": 2908.850479362116,
 			"rotation": 0,
@@ -1815,7 +3682,7 @@
 			"id": "shape:ahHW3j0_krsCX199E1EAB",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 793.3127814930461,
 				"font": "draw",
@@ -1977,66 +3844,6 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 194.01124289658264,
-			"y": 3049.2331540557198,
-			"rotation": 0,
-			"isLocked": false,
-			"opacity": 1,
-			"meta": {},
-			"id": "shape:79OlR7jvjYkDQofQItI-_",
-			"type": "text",
-			"props": {
-				"color": "black",
-				"size": "xl",
-				"w": 818.7385095012482,
-				"font": "draw",
-				"textAlign": "start",
-				"autoSize": false,
-				"scale": 1,
-				"richText": {
-					"type": "doc",
-					"attrs": {
-						"dir": "auto"
-					},
-					"content": [
-						{
-							"type": "orderedList",
-							"attrs": {
-								"dir": "auto",
-								"start": 23,
-								"type": null
-							},
-							"content": [
-								{
-									"type": "listItem",
-									"attrs": {
-										"dir": "auto"
-									},
-									"content": [
-										{
-											"type": "paragraph",
-											"attrs": {
-												"dir": "auto"
-											},
-											"content": [
-												{
-													"type": "text",
-													"text": "admin panel keep the active users thing in it (like how many members are actively using it)"
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				}
-			},
-			"parentId": "page:page",
-			"index": "aaqd2",
-			"typeName": "shape"
-		},
-		{
 			"x": 178.90165585594184,
 			"y": -447.2341416292126,
 			"rotation": 0,
@@ -2148,6 +3955,66 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -1187.4139908598493,
+			"y": 4431.457654278635,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:2OGxbJBTUZ0JdubtdVLu5",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 704.0902907303894,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 22,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "and for the signout as well give a confirmation popup to signout"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0RR5b",
+			"typeName": "shape"
+		},
+		{
 			"x": 2616.261596861835,
 			"y": -230.9110806218971,
 			"rotation": 0,
@@ -2187,6 +4054,66 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -1186.433747917842,
+			"y": 2713.568528994712,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:61zhZ-a8sqUBMn5fp-ksF",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 690.0007393593921,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 14,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "replace the chat compnent in the analysis page with 21st dev coomponent"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0H0gM",
+			"typeName": "shape"
+		},
+		{
 			"x": 189.4617758994218,
 			"y": 2349.269856751056,
 			"rotation": 0,
@@ -2196,7 +4123,7 @@
 			"id": "shape:6LnJtEuRpXjBwStr86ljg",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 817.6202565623919,
 				"font": "draw",
@@ -2327,6 +4254,225 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -1180.8864529422053,
+			"y": 3230.382143091016,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:rQhfNU80JUdkudRjetdGY",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 676.5443520212357,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 17,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "remove the search icon in the nav bar"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0MzA1",
+			"typeName": "shape"
+		},
+		{
+			"x": -1190.92782930468,
+			"y": 1067.5498358458494,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:fnqYcBEw98Q1wCgood4LS",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 693.3579176592764,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 8,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "when the log application is clicked then in the upwards there is slight gap instead of getting blur thing"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "ausDb",
+			"typeName": "shape"
+		},
+		{
+			"x": -1235.8531852370138,
+			"y": -172.6492076018867,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:CV7xzjrfiL7eQADWkhtPw",
+			"type": "geo",
+			"props": {
+				"w": 789.523545917303,
+				"h": 5035.00578290075,
+				"geo": "rectangle",
+				"dash": "draw",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"flipX": false,
+				"flipY": false,
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"size": "xl",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "alaLM",
+			"typeName": "shape"
+		},
+		{
+			"x": -3520.5497951071275,
+			"y": 1250.3319432963954,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:gWs7iZeSCcbrrkOLp2R3n",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1710.2890353589542,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 10,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "and if incase there are website links  then analyse the links so that any contact maild id , phone number is found thre return those "
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b09Rpj",
+			"typeName": "shape"
+		},
+		{
 			"meta": {},
 			"id": "page:page",
 			"name": "Page 1",
@@ -2404,14 +4550,14 @@
 			"followingUserId": null,
 			"opacityForNextShape": 1,
 			"stylesForNextShape": {
-				"tldraw:size": "xl",
+				"tldraw:color": "black",
 				"tldraw:geo": "rectangle",
-				"tldraw:color": "light-green"
+				"tldraw:size": "xl"
 			},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "default",
+				"type": "nwse-resize",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -2422,7 +4568,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 894.4000244140625,
-				"h": 754.4000244140625
+				"h": 409.6000061035156
 			},
 			"insets": [
 				false,
@@ -2439,9 +4585,9 @@
 			"isFocused": true,
 			"devicePixelRatio": 1.25,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": false,
+			"isHoveringCanvas": true,
 			"openMenus": [],
-			"isChangingStyle": true,
+			"isChangingStyle": false,
 			"isReadonly": false,
 			"meta": {},
 			"duplicateProps": null,
@@ -2449,6 +4595,126 @@
 			"id": "instance:instance",
 			"currentPageId": "page:page",
 			"typeName": "instance"
+		},
+		{
+			"x": -3519.215695086256,
+			"y": 1966.4588960260305,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:vvosXFmJsRbXU9gTmBR-x",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1693.1762332985143,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 14,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "if there is no api key pasted in the profile page while doing the analysis thing check that the api key is pasted or not if not donot do the analysis give a popup to inform to users to paste the api key there"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0KuZ2",
+			"typeName": "shape"
+		},
+		{
+			"x": -3522.7706200343455,
+			"y": 1581.0073398736076,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:SDtxraLOmeVnMqPWDtQEZ",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1645.6252970420164,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 12,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "also check especially any company name or for the brand name check the linkdin page , insta page any other alternative to reachout to them via social media accounts"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0BNEA",
+			"typeName": "shape"
 		},
 		{
 			"x": 1431.5012783482555,
@@ -2502,6 +4768,66 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -3545.672712401919,
+			"y": 819.541135379541,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:xfU_VeWKTObHdD71RIS_N",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1675.6919855424298,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 7,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "if any screenshot is uploaded analyse about the project requirement , and if there are any website links like that return them"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b06oiI",
+			"typeName": "shape"
+		},
+		{
 			"x": 193.3612836220376,
 			"y": 2713.8749940614784,
 			"rotation": 0,
@@ -2511,7 +4837,7 @@
 			"id": "shape:8UnkudthuqchMJKaQ2QAw",
 			"type": "text",
 			"props": {
-				"color": "black",
+				"color": "light-green",
 				"size": "xl",
 				"w": 773.5040196699861,
 				"font": "draw",
@@ -2562,21 +4888,21 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 204.357468181258,
-			"y": 1647.2022801888638,
+			"x": -1185.3982033059547,
+			"y": -40.10779662321352,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
 			"meta": {},
-			"id": "shape:oHb3la9WgoIV-ut-c88fk",
+			"id": "shape:fvZhDWeAP7QOh6Xi6bAwh",
 			"type": "text",
 			"props": {
 				"color": "black",
 				"size": "xl",
-				"w": 644.1875,
+				"w": 691.5943667829677,
 				"font": "draw",
 				"textAlign": "start",
-				"autoSize": true,
+				"autoSize": false,
 				"scale": 1,
 				"richText": {
 					"type": "doc",
@@ -2588,7 +4914,7 @@
 							"type": "orderedList",
 							"attrs": {
 								"dir": "auto",
-								"start": 14,
+								"start": 2,
 								"type": null
 							},
 							"content": [
@@ -2606,7 +4932,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "dark theme toggle button"
+													"text": "remove settings icon in the nav bar"
 												}
 											]
 										}
@@ -2618,7 +4944,67 @@
 				}
 			},
 			"parentId": "page:page",
-			"index": "aQHo2",
+			"index": "aoTUN",
+			"typeName": "shape"
+		},
+		{
+			"x": -1182.4514318226677,
+			"y": 4231.094983891469,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:c1YU6lSF7uAtMcTib1yZt",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 742.3329021833595,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 21,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "while deleting a project give a popup confirmation to delete the project"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0QUsY",
 			"typeName": "shape"
 		},
 		{
@@ -2679,6 +5065,66 @@
 			},
 			"parentId": "page:page",
 			"index": "aFYdM",
+			"typeName": "shape"
+		},
+		{
+			"x": -1181.7852613778216,
+			"y": 3802.1549171646966,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:tAu16hzatkjbQNbFmAsl7",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 708.7839080202824,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": false,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "orderedList",
+							"attrs": {
+								"dir": "auto",
+								"start": 20,
+								"type": null
+							},
+							"content": [
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "and the drop down box which is there in the each and every project to change the project state , correct the opacity of the drop down box and align that box properly"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0PKWb",
 			"typeName": "shape"
 		}
 	]

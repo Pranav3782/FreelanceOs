@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, Save, User, Mail, DollarSign, Globe, Shield, RefreshCw } from "lucide-react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const ACCOUNT_SETTINGS_KEY = "freelance_os_account_settings_v1";
 
@@ -193,7 +194,7 @@ export default function SettingsAccountPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-800">
+                  <label className="text-xs font-semibold text-slate-800 dark:text-slate-200">
                     Timezone
                   </label>
                   <input
@@ -201,9 +202,28 @@ export default function SettingsAccountPage() {
                     value={timezone}
                     onChange={(e) => setTimezone(e.target.value)}
                     placeholder="EST (UTC-5)"
-                    className="w-full h-10 rounded-lg border border-slate-200 bg-slate-50/50 px-3 text-xs sm:text-sm text-slate-900 transition-colors focus:border-blue-500 focus:bg-white focus:outline-none"
+                    className="w-full h-10 rounded-lg border border-slate-200 bg-slate-50/50 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-slate-100 px-3 text-xs sm:text-sm text-slate-900 transition-colors focus:border-blue-500 focus:bg-white focus:outline-none"
                   />
                 </div>
+              </div>
+            </div>
+
+            {/* Display & Theme Mode */}
+            <div className="border-t border-slate-100 dark:border-zinc-800/80 pt-6 space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                Display & Theme Calibration
+              </h4>
+
+              <div className="flex items-center justify-between p-4 rounded-xl border border-slate-200/80 dark:border-zinc-800 bg-slate-50/50 dark:bg-zinc-900/50">
+                <div>
+                  <p className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100">
+                    Interface Theme Mode
+                  </p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    Toggle between Light and Dark mode appearance across the entire platform.
+                  </p>
+                </div>
+                <ThemeToggle showLabel variant="outline" className="border-slate-300 dark:border-zinc-700" />
               </div>
             </div>
 
