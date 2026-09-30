@@ -8,7 +8,7 @@ import {
   Laptop, Tablet, Smartphone
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
 export interface PortfolioData {
@@ -19,6 +19,7 @@ export interface PortfolioData {
     fullName: string;
     title: string;
     avatarInitials: string;
+    photoUrl?: string;
     location: string;
     availability: string;
     hourlyRate: string;
@@ -99,9 +100,14 @@ export function PortfolioPreview({
       {/* ── Public Website Navigation ── */}
       <header className="sticky top-0 z-20 border-b border-border/60 bg-white/90 backdrop-blur px-6 py-3.5 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="size-8 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-2xs">
-            {initials}
-          </div>
+          <Avatar className="size-8 border border-border/60">
+            {personal.photoUrl ? (
+              <AvatarImage src={personal.photoUrl} alt={personal.fullName} className="object-cover" />
+            ) : null}
+            <AvatarFallback className="bg-slate-900 text-white font-bold text-xs">
+              {initials}
+            </AvatarFallback>
+          </Avatar>
           <span className="font-bold text-sm tracking-tight text-foreground">
             {personal.fullName || "Portfolio Preview"}
           </span>
@@ -134,6 +140,9 @@ export function PortfolioPreview({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <Avatar className="size-20 sm:size-24 border-2 border-slate-200 shadow-md">
+                {personal.photoUrl ? (
+                  <AvatarImage src={personal.photoUrl} alt={personal.fullName} className="object-cover" />
+                ) : null}
                 <AvatarFallback className="bg-slate-900 text-white font-bold text-2xl">
                   {initials}
                 </AvatarFallback>

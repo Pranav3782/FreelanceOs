@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
@@ -31,6 +31,7 @@ export interface PersonalProfileData {
   availability: string;
   bio: string;
   skills: string[];
+  photoUrl?: string;
   linkedin: string;
   github: string;
   website: string;
@@ -259,6 +260,58 @@ export function PersonalInfoForm({ initialStep = 1 }: PersonalInfoFormProps = {}
         {/* ── STEP 1: Overview ── */}
         {currentStep === 1 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-0">
+            {/* Profile Photo Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-b border-border/50 first:pt-8 last:border-0 last:pb-8">
+              <div className="md:col-span-1 space-y-2">
+                <h4 className="text-sm font-bold text-foreground">Profile Picture</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Upload a clear profile photo. This photo will be shown on your profile and generated portfolio.
+                </p>
+              </div>
+              <div className="md:col-span-2 flex items-center gap-5">
+                <Avatar className="size-16 border-2 border-slate-200 shadow-sm">
+                  {profile.photoUrl ? (
+                    <AvatarImage src={profile.photoUrl} alt={profile.fullName} className="object-cover" />
+                  ) : null}
+                  <AvatarFallback className="bg-slate-900 text-white font-bold text-lg">
+                    {(profile.fullName ? profile.fullName.slice(0, 2) : "FL").toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="space-y-2">
+                  <label className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800 cursor-pointer shadow-2xs transition-colors">
+                    <Camera className="h-4 w-4 text-slate-600" />
+                    <span>Upload Photo</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (!file) return;
+                        const reader = new FileReader();
+                        reader.onload = (evt) => {
+                          const result = evt.target?.result as string;
+                          if (result) {
+                            handleChange("photoUrl", result);
+                          }
+                        };
+                        reader.readAsDataURL(file);
+                      }}
+                    />
+                  </label>
+                  {profile.photoUrl && (
+                    <button
+                      type="button"
+                      onClick={() => handleChange("photoUrl", "")}
+                      className="block text-[11.5px] text-destructive hover:underline"
+                    >
+                      Remove photo
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+
             {/* Field Row */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-b border-border/50 first:pt-8 last:border-0 last:pb-8">
               <div className="md:col-span-1 space-y-2">

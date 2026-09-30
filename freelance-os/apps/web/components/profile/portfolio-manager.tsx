@@ -688,22 +688,22 @@ export function PortfolioManager() {
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
-              <Link href="/p/alex-rivera" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm" className="h-8.5 text-xs font-semibold gap-1.5 shadow-2xs">
-                  <ExternalLink className="h-3.5 w-3.5" />
-                  Live Preview
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+              <Link href={typeof window !== "undefined" && localStorage.getItem("freelance_os_portfolio_published_v1") ? `/p/${JSON.parse(localStorage.getItem("freelance_os_portfolio_published_v1") || "{}").slug || "my-portfolio"}` : "/p/alex-rivera"} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" className="h-9 px-3.5 rounded-lg text-xs font-semibold gap-1.5 shadow-2xs inline-flex items-center justify-center">
+                  <ExternalLink className="h-3.5 w-3.5 text-slate-600" />
+                  <span>Live Preview</span>
                 </Button>
               </Link>
               <Link href="/profile/portfolio/builder">
-                <Button variant="outline" size="sm" className="h-8.5 text-xs font-semibold gap-1.5 shadow-2xs">
-                  <Edit3 className="h-3.5 w-3.5" />
-                  Portfolio Builder
+                <Button variant="outline" size="sm" className="h-9 px-3.5 rounded-lg text-xs font-semibold gap-1.5 shadow-2xs inline-flex items-center justify-center">
+                  <Edit3 className="h-3.5 w-3.5 text-slate-600" />
+                  <span>Portfolio Builder</span>
                 </Button>
               </Link>
-              <Button onClick={handleStartAdd} size="sm" className="h-8.5 text-xs font-semibold gap-1.5 shadow-sm">
+              <Button onClick={handleStartAdd} size="sm" className="h-9 px-4 rounded-lg text-xs font-bold gap-1.5 bg-blue-600 hover:bg-blue-700 text-white shadow-xs inline-flex items-center justify-center">
                 <Plus className="h-3.5 w-3.5" />
-                Add Project
+                <span>Add Project</span>
               </Button>
             </div>
           </div>

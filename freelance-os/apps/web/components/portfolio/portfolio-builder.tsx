@@ -7,13 +7,17 @@ import {
   Sparkles, User, Briefcase, GraduationCap, Layers,
   Globe, Mail, Check, ArrowRight, ArrowLeft, Plus,
   Trash2, Copy, ExternalLink, Eye, Share2, CheckCircle2,
-  AlertCircle, Smartphone, Tablet, Laptop, Star, RefreshCw
+  AlertCircle, Smartphone, Tablet, Laptop, Star, RefreshCw, Camera
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PortfolioPreview, type PortfolioData } from "@/components/portfolio/portfolio-preview";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/components/providers/AuthContext";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase/config";
 
 export const PORTFOLIO_STORAGE_KEY = "freelance_os_portfolio_published_v1";
 
@@ -143,6 +147,7 @@ const STEPS = [
 ];
 
 export function PortfolioBuilder() {
+  const { user } = useAuth();
   const [portfolio, setPortfolio] = useState<PortfolioData>(DEFAULT_PORTFOLIO_DATA);
   const [currentStep, setCurrentStep] = useState<number>(0); // 0 = Welcome screen, 1-8 = Steps, 9 = Published success
   const [mobileView, setMobileView] = useState<"editor" | "preview">("editor");
@@ -154,18 +159,137 @@ export function PortfolioBuilder() {
   const [skillCategory, setSkillCategory] = useState("Frontend & Web");
   const [newSkillItem, setNewSkillItem] = useState("");
 
-  // Load from localStorage
+  // Load from user profile or localStorage
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(PORTFOLIO_STORAGE_KEY);
-      if (saved) {
-        setPortfolio(JSON.parse(saved));
+    const loadData = async () => {
+      try {
+        const saved = localStorage.getItem(PORTFOLIO_STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && parsed.personal?.fullName) {
+            setPortfolio(parsed);
+            setIsLoaded(true);
+            return;
+          }
+        }
+
+        // Hydrate from user profile storage or Auth
+        let name = user?.displayName || "";
+        let email = user?.email || "";
+        let title = "";
+        let rate = "85";
+        let location = "";
+        let bio = "";
+        let skillsList: string[] = [];
+        let photo = "";
+        let linkedin = "";
+        let github = "";
+        let website = "";
+
+        const localPersonal = localStorage.getItem("freelance_os_profile_personal_v1");
+        if (localPersonal) {
+          try {
+            const p = JSON.parse(localPersonal);
+            if (p.fullName) name = p.fullName;
+            if (p.email) email = p.email;
+            if (p.title) title = p.title;
+            if (p.hourlyRate) rate = p.hourlyRate;
+            if (p.city || p.country) location = [p.city, p.country].filter(Boolean).join(", ");
+            if (p.bio) bio = p.bio;
+            if (Array.isArray(p.skills) && p.skills.length > 0) skillsList = p.skills;
+            if (p.photoUrl) photo = p.photoUrl;
+            if (p.linkedin) linkedin = p.linkedin;
+            if (p.github) github = p.github;
+            if (p.website) website = p.website;
+          } catch {}
+        }
+
+        const localAccount = localStorage.getItem("freelance_os_account_settings_v1");
+        if (localAccount) {
+          try {
+            const a = JSON.parse(localAccount);
+            if (!name && a.fullName) name = a.fullName;
+            if (!email && a.email) email = a.email;
+            if (!title && a.title) title = a.title;
+            if (a.hourlyRate) rate = a.hourlyRate;
+            if (!bio && a.bio) bio = a.bio;
+          } catch {}
+        }
+
+        const localProjects = localStorage.getItem("freelance_os_portfolio_projects_v1");
+        let projectsList: any[] = [];
+        if (localProjects) {
+          try {
+            const pr = JSON.parse(localProjects);
+            if (Array.isArray(pr) && pr.length > 0) projectsList = pr;
+          } catch {}
+        }
+
+        if (name || email) {
+          const initials = (name
+            ? name.split(" ").map((n) => n[0]).join("")
+            : email.slice(0, 2)
+          ).toUpperCase().slice(0, 2);
+
+          const slugCandidate = (name || "my-portfolio")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "");
+
+          setPortfolio({
+            slug: slugCandidate,
+            isPublished: false,
+            personal: {
+              fullName: name || "Your Name",
+              title: title || "Full-Stack Engineer & Specialist",
+              avatarInitials: initials,
+              photoUrl: photo,
+              location: location || "Remote",
+              availability: "Available (30+ hrs/week)",
+              hourlyRate: rate,
+            },
+            about: {
+              bio: bio || "Experienced professional delivering tailored solutions for tech and business teams.",
+              yearsOfExperience: "5+",
+              highlights: [
+                "Proven Track Record",
+                "High Quality Execution",
+                "Clear Communication",
+              ],
+            },
+            experience: [
+              {
+                id: "exp-1",
+                company: "Independent Freelance Practice",
+                role: title || "Software Specialist",
+                period: "2022 – Present",
+                description: "Delivering end-to-end applications and technical consulting to clients.",
+              },
+            ],
+            education: [],
+            skills: skillsList.length > 0
+              ? [{ category: "Core Specializations", items: skillsList }]
+              : [{ category: "Core Specializations", items: ["Web Development", "System Architecture"] }],
+            projects: projectsList.length > 0 ? projectsList : [],
+            contact: {
+              email: email,
+              phone: "",
+              whatsapp: "",
+              linkedin: linkedin,
+              github: github,
+              website: website,
+              twitter: "",
+            },
+          });
+        }
+      } catch (err) {
+        console.error("Failed to hydrate user profile into portfolio builder", err);
       }
-    } catch {
-      // ignore
-    }
-    setIsLoaded(true);
-  }, []);
+      setIsLoaded(true);
+    };
+
+    loadData();
+  }, [user]);
 
   const saveToStorage = (updated: PortfolioData) => {
     setPortfolio(updated);
@@ -528,6 +652,51 @@ export function PortfolioBuilder() {
             {/* ── STEP 1: Personal Information ── */}
             {currentStep === 1 && (
               <div className="space-y-4">
+                {/* Photo Upload Section */}
+                <div className="rounded-xl border border-border/60 bg-slate-50/50 p-3.5 space-y-2">
+                  <label className="text-xs font-semibold text-foreground block">Profile Photo / Headshot</label>
+                  <div className="flex items-center gap-4">
+                    <Avatar className="size-16 border-2 border-white shadow-sm shrink-0">
+                      {portfolio.personal.photoUrl ? (
+                        <AvatarImage src={portfolio.personal.photoUrl} alt={portfolio.personal.fullName} className="object-cover" />
+                      ) : null}
+                      <AvatarFallback className="bg-slate-900 text-white font-bold text-base">
+                        {portfolio.personal.avatarInitials || "ME"}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="space-y-1.5">
+                      <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border/80 bg-white hover:bg-slate-100 text-xs font-semibold text-slate-800 cursor-pointer shadow-2xs transition-colors">
+                        <Camera className="h-3.5 w-3.5 text-slate-600" />
+                        <span>Upload Photo</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (!file) return;
+                            const reader = new FileReader();
+                            reader.onload = (evt) => {
+                              const res = evt.target?.result as string;
+                              if (res) updatePersonal("photoUrl", res);
+                            };
+                            reader.readAsDataURL(file);
+                          }}
+                        />
+                      </label>
+                      {portfolio.personal.photoUrl && (
+                        <button
+                          type="button"
+                          onClick={() => updatePersonal("photoUrl", "")}
+                          className="block text-[11px] text-destructive hover:underline"
+                        >
+                          Remove photo
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-foreground">Full Name</label>
