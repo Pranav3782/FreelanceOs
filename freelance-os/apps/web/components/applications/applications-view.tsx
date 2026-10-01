@@ -680,6 +680,13 @@ function AddApplicationModal({
   const [platform, setPlatform] = useState("Upwork");
   const [notes, setNotes] = useState("");
 
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("nav-visibility-change", { detail: { hide: true } }));
+    return () => {
+      window.dispatchEvent(new CustomEvent("nav-visibility-change", { detail: { hide: false } }));
+    };
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!projectTitle.trim() || !clientName.trim()) return;

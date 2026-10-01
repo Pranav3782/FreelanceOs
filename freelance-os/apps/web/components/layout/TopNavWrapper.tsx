@@ -1,10 +1,11 @@
+"use client";
+
 /**
  * @file apps/web/components/layout/TopNavWrapper.tsx
  * @description Intelligent Navigation Header Wrapper with Route & Auth-Based Visibility Filtering
  */
 
-"use client";
-
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/providers/AuthContext";
 import { Header } from "./Header";
@@ -15,6 +16,20 @@ import { Header } from "./Header";
 export function TopNavWrapper() {
   const pathname = usePathname();
   const { user } = useAuth();
+  const [hideNavByModal, setHideNavByModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleNavVisibility = (e: Event) => {
+      const customEvent = e as CustomEvent<{ hide?: boolean }>;
+      setHideNavByModal(Boolean(customEvent.detail?.hide));
+    };
+    window.addEventListener("nav-visibility-change", handleNavVisibility);
+    return () => window.removeEventListener("nav-visibility-change", handleNavVisibility);
+  }, []);
+
+  if (hideNavByModal) {
+    return null;
+  }
 
   const normalizedPath = pathname?.endsWith("/") && pathname.length > 1 
     ? pathname.slice(0, -1) 

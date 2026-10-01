@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
 import { FileUploadZone } from "@/components/analysis/file-upload-zone";
+import { AIChatCard } from "@/components/ui/ai-chat-card";
 import {
   AgentWorkflow,
   PixelDotsLoader,
@@ -288,107 +289,50 @@ export function ChatInterface({
   };
 
   return (
-    <div className="flex h-full flex-col">
-      {/* ── Messages area ── */}
-      <div
-        ref={scrollRef}
-        className="flex-1 overflow-y-auto px-4 py-4 space-y-4 no-scrollbar"
-      >
-        {messages.length === 0 && state === "idle" && (
-          <div className="flex h-full flex-col items-center justify-center text-center py-20">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 border border-border/60 shadow-xs mb-3">
-              <Bot className="h-6 w-6 text-slate-700" />
-            </div>
-            <h3 className="text-lg font-bold text-foreground tracking-tight">
-              Freelancer.com Analysis
-            </h3>
-            <p className="mt-2 max-w-sm text-[13px] text-muted-foreground leading-relaxed">
-              Paste a project description, client profile, or URL below. You can also
-              attach images and files to include in the analysis.
-            </p>
-            <div className="mt-5 flex flex-wrap justify-center gap-2">
-              {[
-                "Paste project description",
-                "Upload screenshot",
-                "Analyze client profile",
-              ].map((hint) => (
-                <Badge
-                  key={hint}
-                  variant="secondary"
-                  className="text-[11px] font-normal cursor-default"
-                >
-                  {hint}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {messages.map((msg, idx) => (
-          <MessageBubble key={msg.id} message={msg} isLatest={idx === messages.length - 1} />
-        ))}
-
-        {isProcessing && <TypingIndicator />}
-      </div>
-
-      {/* ── Input area ── */}
-      <div className="shrink-0 border-t border-border/40 bg-white p-4 space-y-3">
-        {/* Upload zone (collapsed into thumbnails when files present) */}
-        <FileUploadZone
-          files={uploadedFiles}
-          onAddFiles={onAddFiles}
-          onRemoveFile={onRemoveFile}
-          disabled={isProcessing}
-        />
-
-        {/* Text input + submit */}
-        <div className="flex items-end gap-2">
-          <div className="relative flex-1">
-            <textarea
-              ref={textareaRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              onPaste={handlePaste}
-              placeholder="Paste a Freelancer.com project description, URL, or ask a follow-up question..."
-              rows={1}
-              disabled={isProcessing}
-              className={cn(
-                "w-full resize-none rounded-xl border border-border/60 bg-slate-50/50 px-4 py-3 pr-12 text-[13px] leading-relaxed text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-ring focus:bg-white focus:outline-none focus:ring-2 focus:ring-ring/20",
-                isProcessing && "opacity-60 cursor-not-allowed"
-              )}
-            />
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            {messages.length > 0 && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-10 w-10 shrink-0"
-                onClick={onReset}
+    <AIChatCard
+      title="AI Opportunity Analyst"
+      subtitle="How can I help evaluate your project today?"
+      greeting="AI Opportunity Studio"
+      prompt="Paste client brief, job URL, or specifications to trigger real-time AI analysis"
+      onSend={(msg) => onSubmit(msg)}
+      onReset={onReset}
+      onAttach={() => {
+        const inputEl = document.createElement("input");
+        inputEl.type = "file";
+        inputEl.multiple = true;
+        inputEl.onchange = (e: any) => {
+          if (e.target?.files) {
+            onAddFiles(Array.from(e.target.files));
+          }
+        };
+        inputEl.click();
+      }}
+      className="h-full border-0 rounded-xl shadow-none"
+    >
+      <div className="flex flex-1 flex-col h-full overflow-hidden min-h-0">
+        {/* Messages area */}
+        <div
+          ref={scrollRef}
+          className="flex-1 overflow-y-auto px-4 py-4 space-y-4 no-scrollbar"
+        >
+          {uploadedFiles.length > 0 && (
+            <div className="mb-2">
+              <FileUploadZone
+                files={uploadedFiles}
+                onAddFiles={onAddFiles}
+                onRemoveFile={onRemoveFile}
                 disabled={isProcessing}
-                title="New analysis"
-              >
-                <RotateCcw className="h-4 w-4" />
-              </Button>
-            )}
+              />
+            </div>
+          )}
 
-            <Button
-              size="icon"
-              className="h-10 w-10 shrink-0 rounded-xl shadow-sm"
-              onClick={handleSubmit}
-              disabled={isProcessing || (!input.trim() && uploadedFiles.length === 0)}
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
+          {messages.map((msg, idx) => (
+            <MessageBubble key={msg.id} message={msg} isLatest={idx === messages.length - 1} />
+          ))}
+
+          {isProcessing && <TypingIndicator />}
         </div>
-
-        <p className="text-center text-[10px] text-muted-foreground/50">
-          AI analysis is simulated for demonstration purposes
-        </p>
       </div>
-    </div>
+    </AIChatCard>
   );
 }
